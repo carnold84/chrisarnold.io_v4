@@ -1,0 +1,25 @@
+@mixin breakpoint($name) {
+  @if $name == 'sm' {
+    @media (min-width: 576px) {
+      @content;
+    }
+  }
+
+  @if $name == 'md' {
+    @media (min-width: 768px) {
+      @content;
+    }
+  }
+
+  @if $name == 'lg' {
+    @media (min-width: 992px) {
+      @content;
+    }
+  }
+
+  @if $name == 'xl' {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
