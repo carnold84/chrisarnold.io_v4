@@ -29,30 +29,20 @@ export default {
 @import '@/assets/scss/_breakpoint.scss';
 
 .wrapper {
+  align-items: center;
   display: flex;
   flex-direction: column;
   height: 100%;
+  justify-content: center;
   position: absolute;
   width: 100%;
   z-index: 0;
 }
 
 .content {
-  align-items: center;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  justify-content: center;
-  max-width: 1340px;
-  padding: 0 220px;
-
-  @include breakpoint('mobile') {
-    padding: 0 60px;
-  }
-
-  @include breakpoint('tablet') {
-    padding: 0 100px;
-  }
+  max-width: 960px;
 }
 
 .heading {

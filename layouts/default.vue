@@ -1,8 +1,12 @@
 <template>
-  <div :class="themeClass" id="app-wrapper">
-    <app-header />
+  <div id="app-wrapper">
+    <div class="app-header-container">
+      <app-header />
+    </div>
     <div class="app-content">
-      <nuxt />
+      <div class="app-content-inner">
+        <nuxt />
+      </div>
     </div>
   </div>
 </template>
@@ -14,22 +18,27 @@ export default {
   components: {
     AppHeader,
   },
-  computed: {
-    themeClass() {
-      return `${this.$store.state.currentTheme}-theme`
-    },
-  },
   middleware: ['currentRoute'],
 }
 </script>
 
 <style lang="scss">
+@import '@/assets/scss/_breakpoint.scss';
+
 :root {
   --font-primary: 'Inter', Helvetica, Arial, sans-serif;
   --light-color1: #ffffff;
+  --light-color2: #f3f3f3;
+  --light-color3: #e6e7e7;
+  --light-color4: #dadadb;
+  --light-color5: #cdcecf;
+  --light-color6: #c1c2c4;
   --dark-color1: #1c2227;
   --dark-color2: #20262b;
-  --dark-color3: #232b2f;
+  --dark-color3: #242a2f;
+  --dark-color4: #282e34;
+  --dark-color5: #2c3238;
+  --dark-color6: #2f373c;
   --light-text-color1: rgba(0, 0, 0, 0.8);
   --light-text-color2: rgba(0, 0, 0, 0.5);
   --light-text-color3: rgba(0, 0, 0, 0.3);
@@ -58,34 +67,77 @@ body {
   margin: 0;
   overflow-y: scroll;
   padding: 0;
-  /* &::-webkit-scrollbar {
-      width: 10px;
-    }
-    
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    border-left-style: solid;
+    border-left-width: 1px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+  }
+
+  &.light-theme {
     &::-webkit-scrollbar-track {
-      border-left-style: solid;
-      border-left-width: 1px;
+      background-color: var(--light-color2);
+      border-color: var(--light-color3);
     }
+
     &::-webkit-scrollbar-thumb {
-      border-radius: 5px;
+      background-color: var(--light-color3);
     }
-    &.theme-1, &.theme-3 {
-      &::-webkit-scrollbar-track {
-        background-color: var(--theme-color2);
-        border-color: var(--theme-color3);
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--theme-color3);
-      }
+  }
+
+  &.dark-theme {
+    &::-webkit-scrollbar-track {
+      background-color: var(--dark-color2);
+      border-color: var(--dark-color3);
     }
-    &.theme-2 {
-      &::-webkit-scrollbar-track {
-        background-color: var(--theme-color-alt2);
-        border-color: var(--theme-color-alt3);
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: var(--theme-color-alt3);
-      }
-    } */
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--dark-color3);
+    }
+  }
+}
+
+.app-header-container {
+  height: 150px;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.app-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 150px 40px 40px;
+  position: relative;
+  z-index: 0;
+
+  .light-theme & {
+    background-color: var(--light-color1);
+  }
+
+  .dark-theme & {
+    background-color: var(--dark-color1);
+  }
+
+  @include breakpoint('md') {
+    padding: 150px 120px 40px;
+  }
+
+  @include breakpoint('lg') {
+    padding: 150px 220px 120px;
+  }
+}
+
+.app-content-inner {
+  flex-grow: 1;
+  position: relative;
 }
 </style>

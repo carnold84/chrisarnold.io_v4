@@ -56,23 +56,24 @@ export default {
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
+  height: 100%;
   justify-content: space-between;
   margin: 0;
-  padding: 40px;
-  position: fixed;
+  padding: 0 40px;
   width: 100%;
-  z-index: 1;
 
   .light-theme & {
+    background-color: var(--light-color1);
     fill: var(--light-text-color1);
   }
 
   .dark-theme & {
+    background-color: var(--dark-color1);
     fill: var(--dark-text-color1);
   }
 
   @include breakpoint('sm') {
-    padding: 60px;
+    padding: 0 60px;
   }
 }
 

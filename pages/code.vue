@@ -56,25 +56,25 @@ export default {
 }
 
 .content {
-  display: grid;
-  grid-column-gap: 40px;
-  grid-template-columns: 1fr;
-  min-height: 100vh;
-  padding: 90px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: -20px;
 
-  @include breakpoint('md') {
-    grid-column-gap: 40px;
-    grid-template-columns: 1fr 1fr;
-    padding: 110px 40px;
+  & > * {
+    margin: 20px;
+    width: calc(100% - 40px);
   }
 
-  @include breakpoint('lg') {
-    padding: 110px 120px;
+  @include breakpoint('md') {
+    & > * {
+      width: calc(50% - 40px);
+    }
   }
 
   @include breakpoint('xl') {
-    grid-column-gap: 40px;
-    grid-template-columns: 1fr 1fr 1fr;
+    & > * {
+      width: calc(33.33% - 40px);
+    }
   }
 }
 </style>

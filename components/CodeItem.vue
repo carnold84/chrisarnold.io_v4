@@ -100,7 +100,7 @@ export default {
   padding: 40px;
   width: 100%;
 
-  @include breakpoint('sm') {
+  @include breakpoint('lg') {
     grid-template-areas:
       'number header header header'
       'number content content content'
@@ -121,7 +121,7 @@ export default {
   margin: 0 0 10px;
   width: 100%;
 
-  @include breakpoint('sm') {
+  @include breakpoint('lg') {
     display: flex;
   }
 }
