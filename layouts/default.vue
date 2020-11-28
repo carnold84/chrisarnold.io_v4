@@ -83,32 +83,48 @@ body {
 
   &.light-theme {
     &::-webkit-scrollbar-track {
-      background-color: var(--light-color2);
-      border-color: var(--light-color3);
+      background-color: var(--light-color1);
+      border-color: var(--light-color1);
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: var(--light-color3);
+      background-color: rgba(0, 0, 0, 0.25);
     }
   }
 
   &.dark-theme {
     &::-webkit-scrollbar-track {
-      background-color: var(--dark-color2);
-      border-color: var(--dark-color3);
+      background-color: var(--dark-color1);
+      border-color: var(--dark-color1);
     }
 
     &::-webkit-scrollbar-thumb {
-      background-color: var(--dark-color3);
+      background-color: rgba(0, 0, 0, 0.25);
     }
+  }
+}
+
+.markdown-body {
+  color: var(--dark-text-color2);
+
+  a,
+  a:link,
+  a:visited {
+    color: var(--dark-text-color1);
+    text-decoration: none;
   }
 }
 
 .app-header-container {
   height: 150px;
+  padding: 0 40px;
   position: fixed;
   width: 100%;
   z-index: 1;
+
+  @include breakpoint('lg') {
+    padding: 0 70px;
+  }
 }
 
 .app-content {
@@ -128,11 +144,11 @@ body {
   }
 
   @include breakpoint('md') {
-    padding: 150px 120px 40px;
+    padding: 150px 110px 40px;
   }
 
   @include breakpoint('lg') {
-    padding: 150px 220px 120px;
+    padding: 150px 140px 120px;
   }
 }
 

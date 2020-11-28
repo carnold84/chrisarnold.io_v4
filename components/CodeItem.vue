@@ -145,13 +145,6 @@ export default {
   grid-area: content;
   line-height: 1.8rem;
   margin: 0 0 20px;
-
-  a,
-  a:link,
-  a:visited {
-    color: var(--dark-text-color1);
-    text-decoration: none;
-  }
 }
 
 .code-item-meta {

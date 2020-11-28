@@ -24,6 +24,16 @@ export default {
     },
   },
   meta: {
+    breadcrumb: [
+      {
+        id: 'code-1',
+        label: 'Code',
+      },
+      {
+        id: 'code-2',
+        label: 'Projects & Experiments',
+      },
+    ],
     theme: 'dark',
   },
   mounted() {
