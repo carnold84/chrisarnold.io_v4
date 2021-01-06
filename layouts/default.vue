@@ -33,12 +33,14 @@ export default {
   --light-color4: #dadadb;
   --light-color5: #cdcecf;
   --light-color6: #c1c2c4;
+  --light-focus: rgb(185, 78, 247);
   --dark-color1: #1c2227;
   --dark-color2: #20262b;
   --dark-color3: #242a2f;
   --dark-color4: #282e34;
   --dark-color5: #2c3238;
   --dark-color6: #2f373c;
+  --dark-focus: rgb(185, 78, 247);
   --light-text-color1: rgba(0, 0, 0, 0.8);
   --light-text-color2: rgba(0, 0, 0, 0.5);
   --light-text-color3: rgba(0, 0, 0, 0.3);
@@ -63,7 +65,6 @@ html {
 }
 
 body {
-  background-color: var(--theme-color1);
   margin: 0;
   overflow-y: scroll;
   padding: 0;
@@ -82,6 +83,8 @@ body {
   }
 
   &.light-theme {
+    background-color: var(--light-color1);
+
     &::-webkit-scrollbar-track {
       background-color: var(--light-color1);
       border-color: var(--light-color1);
@@ -93,6 +96,8 @@ body {
   }
 
   &.dark-theme {
+    background-color: var(--dark-color1);
+
     &::-webkit-scrollbar-track {
       background-color: var(--dark-color1);
       border-color: var(--dark-color1);
@@ -116,22 +121,16 @@ body {
 }
 
 .app-header-container {
-  height: 150px;
-  padding: 0 40px;
   position: fixed;
   width: 100%;
   z-index: 1;
-
-  @include breakpoint('lg') {
-    padding: 0 70px;
-  }
 }
 
 .app-content {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 150px 40px 40px;
+  padding: 155px 40px 40px;
   position: relative;
   z-index: 0;
 
@@ -144,11 +143,11 @@ body {
   }
 
   @include breakpoint('md') {
-    padding: 150px 110px 40px;
+    padding: 155px 110px 40px;
   }
 
   @include breakpoint('lg') {
-    padding: 150px 140px 120px;
+    padding: 155px 140px 120px;
   }
 }
 

@@ -72,10 +72,15 @@ export default {
   display: flex;
   flex-direction: row;
   flex-shrink: 0;
-  height: 100%;
   justify-content: space-between;
   margin: 0;
+  padding: 40px 50px;
+  transition: fill 500ms;
   width: 100%;
+
+  @include breakpoint('lg') {
+    padding: 60px 70px;
+  }
 
   .light-theme & {
     background-color: var(--light-color1);
@@ -166,6 +171,11 @@ export default {
     &:hover {
       fill: var(--light-text-color1);
     }
+
+    &:focus {
+      fill: var(--light-focus);
+      outline: none;
+    }
   }
 
   .dark-theme & {
@@ -174,10 +184,17 @@ export default {
     &:hover {
       fill: var(--dark-text-color1);
     }
+
+    &:focus {
+      fill: var(--dark-focus);
+      outline: none;
+    }
   }
 }
 
 .menu-icon {
   fill: inherit;
+  height: 26px;
+  width: 26px;
 }
 </style>

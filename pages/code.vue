@@ -49,9 +49,10 @@ export default {
       this.selectedProject = id
     },
   },
-  /* transition: {
+  transition: {
     mode: 'in-out',
-  }, */
+    name: 'code',
+  },
 }
 </script>
 
@@ -62,7 +63,18 @@ export default {
   background-color: var(--dark-color1);
   display: flex;
   flex-direction: column;
+  opacity: 1;
   position: relative;
+}
+
+.code-enter-active,
+.code-leave-active {
+  transition: opacity 0.5s;
+}
+
+.code-enter,
+.code-leave-active {
+  opacity: 0;
 }
 
 .content {

@@ -17,11 +17,13 @@ export default {
     },
   },
   meta: {
+    breadcrumb: [],
     theme: 'light',
   },
-  /* transition: {
-    mode: 'in-out',
-  }, */
+  transition: {
+    mode: 'out-in',
+    name: 'home',
+  },
 }
 </script>
 
@@ -34,9 +36,20 @@ export default {
   flex-direction: column;
   height: 100%;
   justify-content: center;
+  opacity: 1;
   position: absolute;
   width: 100%;
   z-index: 0;
+}
+
+.home-enter-active,
+.home-leave-active {
+  transition: opacity 0.5s;
+}
+
+.home-enter,
+.home-leave-active {
+  opacity: 0;
 }
 
 .content {
@@ -58,7 +71,7 @@ export default {
   line-height: 2.6rem;
   margin: 0 0 25px;
 
-  @include breakpoint('mobile') {
+  @include breakpoint('sm') {
     font-size: 5.2vw;
     line-height: 5.2vw;
   }
@@ -71,12 +84,12 @@ export default {
   margin: 0 0 10px;
   text-align: justify;
 
-  @include breakpoint('mobile') {
+  @include breakpoint('sm') {
     font-size: 1.3rem;
     line-height: 2rem;
   }
 
-  @include breakpoint('tablet') {
+  @include breakpoint('md') {
     font-size: 1.3rem;
     line-height: 2.2rem;
   }

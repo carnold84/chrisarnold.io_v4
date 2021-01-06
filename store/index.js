@@ -11,13 +11,50 @@ export const state = () => ({
     title: 'Hello',
   },
   projects: undefined,
+  resources: undefined,
+  tags: undefined,
 })
+
+export const getters = {
+  resourcesByTag: (state) => (tag) => {
+    if (state.resources === undefined) {
+      return
+    }
+
+    return state.resources.filter(({ tags }) => {
+      return tags.includes(tag)
+    })
+  },
+  tags: (state) => {
+    return state.tags
+  },
+}
 
 export const actions = {
   async getProjects(context) {
-    const response = await this.$axios.$get(process.env.apiUrl)
+    const response = await this.$axios.$get(
+      `${process.env.apiUrl}/items/projects`
+    )
 
     context.commit('addProjects', response.data)
+  },
+  async getResources(context) {
+    const response = await this.$axios.$get(
+      `${process.env.apiUrl}/items/resources`
+    )
+
+    const tags = []
+
+    response.data.forEach((element) => {
+      element.tags.forEach((tag) => {
+        if (!tags.includes(tag)) {
+          tags.push(tag)
+        }
+      })
+    })
+
+    context.commit('addResources', response.data)
+    context.commit('addTags', tags)
   },
   setCurrentRoute(context, payload) {
     context.commit('setCurrentRoute', payload)
@@ -43,6 +80,12 @@ export const actions = {
 export const mutations = {
   addProjects(state, projects) {
     state.projects = projects
+  },
+  addResources(state, resources) {
+    state.resources = resources
+  },
+  addTags(state, tags) {
+    state.tags = tags
   },
   setCurrentRoute(state, route) {
     state.currentRoute = route
