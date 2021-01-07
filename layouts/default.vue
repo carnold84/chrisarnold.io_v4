@@ -69,6 +69,10 @@ body {
   overflow-y: scroll;
   padding: 0;
 
+  &.no-scroll {
+    overflow: hidden;
+  }
+
   &::-webkit-scrollbar {
     width: 10px;
   }

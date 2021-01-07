@@ -28,7 +28,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['~/plugins/vue-simple-markdown.js'],
+  plugins: ['~/plugins/vue-simple-markdown.js', '~/plugins/vue-simple-portal'],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,

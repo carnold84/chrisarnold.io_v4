@@ -1,24 +1,10 @@
 <template>
   <div class="wrapper">
-    <div v-if="showFilters">
-      Filters
-      <button class="filter-btn" @click="onHideFilters">
-        <svg
-          class="close-icon"
-          height="27"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 27 27"
-          width="27"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M1.41421 0L0 1.41421L12.0208 13.435L0 25.4558L1.41421 26.8701L13.435 14.8492L25.4558 26.8701L26.8701 25.4558L14.8492 13.435L26.8701 1.41421L25.4558 0L13.435 12.0208L1.41421 0Z"
-          />
-        </svg>
-      </button>
-    </div>
+    <filter-drawer
+      :on-close="onHideFilters"
+      :on-select="onSelectFilters"
+      :is-open="showFilters"
+    ></filter-drawer>
     <div class="toolbar">
       <button class="filter-btn" @click="onShowFilters">
         <svg
@@ -34,7 +20,6 @@
           ></path>
         </svg>
       </button>
-      {{ showFilters }}
     </div>
     <div class="content">
       <div v-if="items === undefined">Loading...</div>
@@ -45,6 +30,7 @@
 
 <script>
 import ResourceItem from '~/components/ResourceItem.vue'
+import FilterDrawer from '~/components/FilterDrawer.vue'
 
 export default {
   calculated: {
@@ -52,7 +38,7 @@ export default {
       return this.$store.state.tags
     },
   },
-  components: { ResourceItem },
+  components: { ResourceItem, FilterDrawer },
   props: {
     items: {
       default: undefined,
@@ -67,6 +53,9 @@ export default {
   methods: {
     onHideFilters() {
       this.showFilters = false
+    },
+    onSelectFilters(filters) {
+      console.log(filters)
     },
     onShowFilters() {
       this.showFilters = true
