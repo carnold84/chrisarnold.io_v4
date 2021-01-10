@@ -33,7 +33,7 @@ export default {
   --light-color4: #dadadb;
   --light-color5: #cdcecf;
   --light-color6: #c1c2c4;
-  --light-focus: rgb(185, 78, 247);
+  --light-focus: #fb774a;
   --dark-color1: #1c2227;
   --dark-color2: #20262b;
   --dark-color3: #242a2f;

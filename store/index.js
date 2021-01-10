@@ -25,6 +25,25 @@ export const getters = {
       return tags.includes(tag)
     })
   },
+  resourcesByTags: (state) => (selectedTags) => {
+    if (state.resources === undefined) {
+      return
+    }
+
+    console.log(selectedTags)
+
+    return state.resources.filter(({ tags }) => {
+      let hasTag = false
+
+      tags.forEach((tag) => {
+        if (!hasTag) {
+          hasTag = selectedTags.includes(tag)
+        }
+      })
+
+      return hasTag
+    })
+  },
   tags: (state) => {
     return state.tags
   },

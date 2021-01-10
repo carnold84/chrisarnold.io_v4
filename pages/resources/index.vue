@@ -1,6 +1,10 @@
 <template>
   <div>
-    <resources-page :items="resources" />
+    <resources-page
+      :items="resources"
+      :on-tags-change="onTagsChange"
+      :tags="tags"
+    />
   </div>
 </template>
 
@@ -9,9 +13,17 @@ import ResourcesPage from '~/components/ResourcesPage.vue'
 
 export default {
   components: { ResourcesPage },
+  data() {
+    return {
+      selectedTags: this.tags || [],
+    }
+  },
   computed: {
     resources() {
-      return this.$store.state.resources
+      return this.$store.getters.resourcesByTags(this.selectedTags)
+    },
+    tags() {
+      return this.$store.state.tags
     },
   },
   meta: {
@@ -23,10 +35,20 @@ export default {
     ],
     theme: 'light',
   },
+  watch: {
+    tags(newTags, oldTags) {
+      this.selectedTags = [...newTags]
+    },
+  },
   mounted() {
     if (this.resources === undefined) {
       this.$store.dispatch('getResources')
     }
+  },
+  methods: {
+    onTagsChange(tags) {
+      this.selectedTags = [...tags]
+    },
   },
   transition: {
     mode: 'in-out',

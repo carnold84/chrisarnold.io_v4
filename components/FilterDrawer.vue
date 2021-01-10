@@ -1,5 +1,20 @@
 <template>
-  <app-drawer :is-open="isOpen" :on-close="onClose"> {tags} </app-drawer>
+  <app-drawer :is-open="isOpen" :on-close="onClose">
+    <div class="filter-drawer">
+      <h3 class="filters-title">What topics are you interested in?</h3>
+      <ul class="tag-list">
+        <li
+          v-for="tag of tags"
+          :key="tag"
+          class="tag-item"
+          :class="{ 'is-active': selectedTags.includes(tag) }"
+          @click="(evt) => onSelectClick(evt, tag)"
+        >
+          {{ tag }}
+        </li>
+      </ul>
+    </div>
+  </app-drawer>
 </template>
 
 <script>
@@ -21,9 +36,13 @@ export default {
       required: true,
       type: Function,
     },
+    tags: {
+      required: true,
+      type: Array,
+    },
   },
   data() {
-    return { selectedTags: [] }
+    return { selectedTags: this.tags }
   },
   computed: {
     currentRoute() {
@@ -31,8 +50,17 @@ export default {
     },
   },
   methods: {
-    onSelectClick(evt, route) {
+    onSelectClick(evt, tag) {
+      evt.preventDefault()
       this.onClose()
+      if (this.selectedTags.includes(tag)) {
+        this.selectedTags = this.selectedTags.filter((element) => {
+          return element !== tag
+        })
+      } else {
+        this.selectedTags.push(tag)
+      }
+      console.log(this.selectedTags)
       this.onSelect({ selectedTags: this.selectedTags })
     },
   },
@@ -40,28 +68,49 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.filter-drawer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.filters-title {
+  margin: 0;
+  text-align: center;
+}
+
 .tag-list {
+  --gutter: 5px;
+
   display: flex;
   list-style: none;
-  justify-content: space-between;
-  padding: 0 60px 27px;
+  justify-content: center;
+  margin: -var(--gutter);
+  padding: 0;
   width: 100%;
 }
 
 .tag-item {
+  align-items: center;
   background-color: transparent;
-  border: none;
-  border-radius: 3px;
+  border: 1px solid var(--light-color2);
+  border-radius: 20px;
   color: var(--light-text-color2);
   cursor: pointer;
+  display: flex;
   font-family: var(--font-primary);
-  font-size: 2.9rem;
+  font-size: 1.3rem;
   font-weight: 300;
-  padding: 5px;
+  height: 40px;
+  margin: var(--gutter);
+  padding: 5px 20px;
   text-transform: uppercase;
 
   &.is-active {
-    color: var(--light-text-color1);
+    background-color: var(--light-focus);
+    border: 1px solid var(--light-focus);
+    color: #ffffff;
   }
 
   &:hover {
