@@ -38,9 +38,26 @@ export default {
 }
 
 .page-header-container {
+  background-color: transparent;
   position: fixed;
+  transition: background-color 100ms ease;
+  transition-delay: 200ms;
   width: 100%;
   z-index: 1;
+
+  .light-theme & {
+    .page-enter &,
+    .page-leave-to & {
+      background-color: var(--light-color1);
+    }
+  }
+
+  .dark-theme & {
+    .page-enter &,
+    .page-leave-to & {
+      background-color: var(--dark-color1);
+    }
+  }
 }
 
 .page-content {

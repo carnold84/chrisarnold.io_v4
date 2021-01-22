@@ -82,12 +82,10 @@ export default {
   }
 
   .light-theme & {
-    background-color: var(--light-color1);
     fill: var(--light-text-color1);
   }
 
   .dark-theme & {
-    background-color: var(--dark-color1);
     fill: var(--dark-text-color1);
   }
 }
