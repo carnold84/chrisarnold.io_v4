@@ -1,22 +1,26 @@
 <template>
-  <div class="wrapper">
-    <div class="content">
-      <code-item
-        v-for="(project, index) in projects"
-        :key="project._id"
-        :item="project"
-        :number="index + 1"
-      />
+  <app-page>
+    <div class="wrapper">
+      <div class="content">
+        <code-item
+          v-for="(project, index) in projects"
+          :key="project._id"
+          :item="project"
+          :number="index + 1"
+        />
+      </div>
     </div>
-  </div>
+  </app-page>
 </template>
 
 <script>
+import AppPage from '~/components/AppPage.vue'
 import CodeItem from '~/components/CodeItem.vue'
 
 export default {
   components: {
     CodeItem,
+    AppPage,
   },
   computed: {
     projects() {
@@ -50,8 +54,7 @@ export default {
     },
   },
   transition: {
-    mode: 'in-out',
-    name: 'code',
+    name: 'page',
   },
 }
 </script>
@@ -60,21 +63,10 @@ export default {
 @import '@/assets/scss/_breakpoint.scss';
 
 .wrapper {
-  background-color: var(--dark-color1);
   display: flex;
   flex-direction: column;
   opacity: 1;
   position: relative;
-}
-
-.code-enter-active,
-.code-leave-active {
-  transition: opacity 0.5s;
-}
-
-.code-enter,
-.code-leave-active {
-  opacity: 0;
 }
 
 .content {

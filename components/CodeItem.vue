@@ -117,7 +117,7 @@ export default {
   font-size: 2rem;
   font-weight: 300;
   grid-area: number;
-  line-height: 2.4rem;
+  line-height: 2.6rem;
   margin: 0 0 10px;
   width: 100%;
 

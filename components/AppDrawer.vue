@@ -45,14 +45,14 @@ export default {
       type: Function,
     },
   },
-  methods: {
+  /* methods: {
     beforeEnter() {
       document.querySelector('body').classList.add('no-scroll')
     },
     afterLeave() {
       document.querySelector('body').classList.remove('no-scroll')
     },
-  },
+  }, */
 }
 </script>
 
@@ -83,7 +83,8 @@ export default {
 .fade-leave-active {
   transition: backdrop-filter var(--duration) ease, opacity var(--duration) ease;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
   transition: backdrop-filter var(--duration) ease, opacity var(--duration) ease;
 }

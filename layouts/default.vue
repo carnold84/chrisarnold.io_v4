@@ -1,23 +1,11 @@
 <template>
   <div id="app-wrapper">
-    <div class="app-header-container">
-      <app-header />
-    </div>
-    <div class="app-content">
-      <div class="app-content-inner">
-        <nuxt />
-      </div>
-    </div>
+    <nuxt />
   </div>
 </template>
 
 <script>
-import AppHeader from '~/components/AppHeader.vue'
-
 export default {
-  components: {
-    AppHeader,
-  },
   middleware: ['currentRoute'],
 }
 </script>
@@ -33,7 +21,7 @@ export default {
   --light-color4: #dadadb;
   --light-color5: #cdcecf;
   --light-color6: #c1c2c4;
-  --light-focus: #fb774a;
+  --light-focus: #1c2227;
   --dark-color1: #1c2227;
   --dark-color2: #20262b;
   --dark-color3: #242a2f;
@@ -47,6 +35,8 @@ export default {
   --dark-text-color1: rgba(255, 255, 255, 1);
   --dark-text-color2: rgba(255, 255, 255, 0.5);
   --dark-text-color3: rgba(255, 255, 255, 0.3);
+
+  --page-transition-duration: 500ms;
 }
 
 *,
@@ -68,6 +58,8 @@ body {
   margin: 0;
   overflow-y: scroll;
   padding: 0;
+  transition: background-color var(--page-transition-duration) ease;
+  transition-delay: var(--page-transition-duration);
 
   &.no-scroll {
     overflow: hidden;
@@ -122,41 +114,5 @@ body {
     color: var(--dark-text-color1);
     text-decoration: none;
   }
-}
-
-.app-header-container {
-  position: fixed;
-  width: 100%;
-  z-index: 1;
-}
-
-.app-content {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding: 155px 40px 40px;
-  position: relative;
-  z-index: 0;
-
-  .light-theme & {
-    background-color: var(--light-color1);
-  }
-
-  .dark-theme & {
-    background-color: var(--dark-color1);
-  }
-
-  @include breakpoint('md') {
-    padding: 155px 110px 40px;
-  }
-
-  @include breakpoint('lg') {
-    padding: 155px 140px 120px;
-  }
-}
-
-.app-content-inner {
-  flex-grow: 1;
-  position: relative;
 }
 </style>

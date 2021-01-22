@@ -75,7 +75,6 @@ export default {
   justify-content: space-between;
   margin: 0;
   padding: 40px 50px;
-  transition: fill 500ms;
   width: 100%;
 
   @include breakpoint('lg') {

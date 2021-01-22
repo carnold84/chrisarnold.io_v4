@@ -1,18 +1,19 @@
 <template>
-  <div>
+  <app-page>
     <resources-page
       :items="resources"
       :on-tags-change="onTagsChange"
       :tags="tags"
     />
-  </div>
+  </app-page>
 </template>
 
 <script>
+import AppPage from '~/components/AppPage.vue'
 import ResourcesPage from '~/components/ResourcesPage.vue'
 
 export default {
-  components: { ResourcesPage },
+  components: { ResourcesPage, AppPage },
   data() {
     return {
       selectedTags: this.tags || [],
@@ -20,9 +21,11 @@ export default {
   },
   computed: {
     resources() {
+      console.log(this.selectedTags)
       return this.$store.getters.resourcesByTags(this.selectedTags)
     },
     tags() {
+      console.log(this.$store.state.tags)
       return this.$store.state.tags
     },
   },
@@ -37,12 +40,17 @@ export default {
   },
   watch: {
     tags(newTags, oldTags) {
+      console.log('newTags', newTags)
       this.selectedTags = [...newTags]
     },
   },
   mounted() {
     if (this.resources === undefined) {
       this.$store.dispatch('getResources')
+    }
+
+    if (this.tags) {
+      this.selectedTags = this.tags
     }
   },
   methods: {
@@ -51,20 +59,9 @@ export default {
     },
   },
   transition: {
-    mode: 'in-out',
-    name: 'resources',
+    name: 'page',
   },
 }
 </script>
 
-<style scoped lang="scss">
-.resources-enter-active,
-.resources-leave-active {
-  transition: opacity 0.5s;
-}
-
-.resources-enter,
-.resources-leave-active {
-  opacity: 0;
-}
-</style>
+<style scoped lang="scss"></style>

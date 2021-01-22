@@ -32,20 +32,9 @@ export default {
     }
   },
   transition: {
-    mode: 'in-out',
-    name: 'resources',
+    name: 'page',
   },
 }
 </script>
 
-<style scoped lang="scss">
-.resources-enter-active,
-.resources-leave-active {
-  transition: opacity 0.5s;
-}
-
-.resources-enter,
-.resources-leave-active {
-  opacity: 0;
-}
-</style>
+<style scoped lang="scss"></style>

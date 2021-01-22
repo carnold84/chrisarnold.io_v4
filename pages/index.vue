@@ -1,16 +1,20 @@
 <template>
-  <div class="wrapper">
-    <div class="content">
-      <section class="section">
-        <h1 class="heading">{{ content.title }}</h1>
-        <p class="paragraph">{{ content.body }}</p>
-      </section>
+  <app-page>
+    <div class="wrapper">
+      <div class="content">
+        <section class="section">
+          <h1 class="heading">{{ content.title }}</h1>
+          <p class="paragraph">{{ content.body }}</p>
+        </section>
+      </div>
     </div>
-  </div>
+  </app-page>
 </template>
 
 <script>
+import AppPage from '~/components/AppPage.vue'
 export default {
+  components: { AppPage },
   computed: {
     content() {
       return this.$store.state.home
@@ -21,8 +25,7 @@ export default {
     theme: 'light',
   },
   transition: {
-    mode: 'out-in',
-    name: 'home',
+    name: 'page',
   },
 }
 </script>
@@ -40,16 +43,6 @@ export default {
   position: absolute;
   width: 100%;
   z-index: 0;
-}
-
-.home-enter-active,
-.home-leave-active {
-  transition: opacity 0.5s;
-}
-
-.home-enter,
-.home-leave-active {
-  opacity: 0;
 }
 
 .content {
