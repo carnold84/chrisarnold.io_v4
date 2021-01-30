@@ -1,5 +1,5 @@
 <template>
-  <app-page>
+  <app-page :breadcrumb="breadcrumb" theme="light">
     <resources-page
       :items="resources"
       :on-tags-change="onTagsChange"
@@ -16,6 +16,16 @@ export default {
   components: { ResourcesPage, AppPage },
   data() {
     return {
+      breadcrumb: [
+        {
+          id: 'code-1',
+          label: 'Code',
+        },
+        {
+          id: 'code-2',
+          label: 'Projects & Experiments',
+        },
+      ],
       selectedTags: this.tags || [],
     }
   },
@@ -28,15 +38,6 @@ export default {
       console.log(this.$store.state.tags)
       return this.$store.state.tags
     },
-  },
-  meta: {
-    breadcrumb: [
-      {
-        id: 'resources-1',
-        label: 'Resources',
-      },
-    ],
-    theme: 'light',
   },
   watch: {
     tags(newTags, oldTags) {
@@ -59,6 +60,7 @@ export default {
     },
   },
   transition: {
+    mode: '',
     name: 'page',
   },
 }

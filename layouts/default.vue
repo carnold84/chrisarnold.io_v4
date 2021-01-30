@@ -22,6 +22,7 @@ export default {
   --light-color5: #cdcecf;
   --light-color6: #c1c2c4;
   --light-focus: #1c2227;
+  --light-text-focus: #ffffff;
   --dark-color1: #1c2227;
   --dark-color2: #20262b;
   --dark-color3: #242a2f;
@@ -29,6 +30,7 @@ export default {
   --dark-color5: #2c3238;
   --dark-color6: #2f373c;
   --dark-focus: rgb(185, 78, 247);
+  --dark-text-focus: #1c2227;
   --light-text-color1: rgba(0, 0, 0, 0.8);
   --light-text-color2: rgba(0, 0, 0, 0.5);
   --light-text-color3: rgba(0, 0, 0, 0.3);
@@ -36,7 +38,7 @@ export default {
   --dark-text-color2: rgba(255, 255, 255, 0.5);
   --dark-text-color3: rgba(255, 255, 255, 0.3);
 
-  --page-transition-duration: 500ms;
+  --page-transition-duration: 1000ms;
 }
 
 *,
@@ -58,8 +60,7 @@ body {
   margin: 0;
   overflow-y: scroll;
   padding: 0;
-  transition: background-color var(--page-transition-duration) ease;
-  transition-delay: var(--page-transition-duration);
+  //transition: background-color var(--page-transition-duration) ease;
 
   &.no-scroll {
     overflow: hidden;
@@ -78,7 +79,7 @@ body {
     border-radius: 5px;
   }
 
-  &.light-theme {
+  /* &.light-theme {
     background-color: var(--light-color1);
 
     &::-webkit-scrollbar-track {
@@ -102,7 +103,7 @@ body {
     &::-webkit-scrollbar-thumb {
       background-color: rgba(0, 0, 0, 0.25);
     }
-  }
+  } */
 }
 
 .markdown-body {
@@ -114,5 +115,23 @@ body {
     color: var(--dark-text-color1);
     text-decoration: none;
   }
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity var(--page-transition-duration) ease !important;
+}
+
+.page-enter-active {
+  z-index: 1;
+}
+
+.page-leave-active {
+  z-index: 0;
+}
+
+.page-enter,
+.page-leave-to {
+  opacity: 0 !important;
 }
 </style>

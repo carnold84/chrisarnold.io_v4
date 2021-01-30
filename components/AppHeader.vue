@@ -17,6 +17,7 @@
       </div>
     </div>
     <div class="content-end">
+      <app-nav class="main-nav" />
       <button class="menu-btn" @click="isMenuOpen = !isMenuOpen">
         <svg
           class="menu-icon"
@@ -32,12 +33,17 @@
         </svg>
       </button>
     </div>
-    <app-nav :is-open="isMenuOpen" :on-close="onCloseMenu" />
+    <app-nav-drawer
+      class="nav-drawer"
+      :is-open="isMenuOpen"
+      :on-close="onCloseMenu"
+    />
   </div>
 </template>
 
 <script>
 import AppNav from './AppNav.vue'
+import AppNavDrawer from './AppNavDrawer.vue'
 import AppLogo from '~/components/AppLogo.vue'
 
 export default {
@@ -45,16 +51,20 @@ export default {
   components: {
     AppLogo,
     AppNav,
+    AppNavDrawer,
+  },
+  props: {
+    breadcrumb: {
+      default() {
+        return []
+      },
+      type: Array,
+    },
   },
   data() {
     return {
       isMenuOpen: false,
     }
-  },
-  computed: {
-    breadcrumb() {
-      return this.$store.state.breadcrumb
-    },
   },
   methods: {
     onCloseMenu() {
@@ -153,7 +163,14 @@ export default {
 
 .content-end {
   display: block;
-  height: 27px;
+}
+
+.main-nav {
+  display: none;
+
+  @include breakpoint('md') {
+    display: flex;
+  }
 }
 
 .menu-btn {
@@ -187,11 +204,21 @@ export default {
       outline: none;
     }
   }
+
+  @include breakpoint('md') {
+    display: none;
+  }
 }
 
 .menu-icon {
   fill: inherit;
   height: 26px;
   width: 26px;
+}
+
+.nav-drawer {
+  @include breakpoint('md') {
+    display: none;
+  }
 }
 </style>

@@ -21,7 +21,6 @@
             >
               <path
                 d="M20.8388 6.69459L8.81799 18.7154L3.16113 13.0586L4.57113 11.6486L8.81799 15.8854L19.4288 5.28459L20.8388 6.69459Z"
-                fill="#2E3A59"
               />
             </svg>
             <svg
@@ -34,7 +33,6 @@
             >
               <path
                 d="M17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41L17.59 5Z"
-                fill="#2E3A59"
               />
             </svg>
           </span>
@@ -129,6 +127,7 @@ export default {
   color: var(--light-text-color2);
   cursor: pointer;
   display: flex;
+  fill: var(--light-text-color1);
   font-family: var(--font-primary);
   font-size: 1.1rem;
   font-weight: 300;
@@ -147,6 +146,7 @@ export default {
 
   .add-icon,
   .remove-icon {
+    fill: inherit;
     opacity: 0;
     position: absolute;
     transition: opacity 300ms ease;
@@ -154,8 +154,10 @@ export default {
   }
 
   &.is-active {
+    background-color: var(--light-focus);
     border: 2px solid var(--light-focus);
-    color: var(--light-text-color1);
+    color: var(--dark-text-color1);
+    fill: var(--light-text-focus);
   }
 
   &:hover {
@@ -166,6 +168,8 @@ export default {
     }
 
     &.is-active {
+      color: var(--dark-text-color1);
+
       .remove-icon {
         opacity: 1;
         transition-delay: 100ms;

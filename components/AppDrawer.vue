@@ -1,10 +1,11 @@
 <template>
   <portal>
-    <transition
+    <!-- <transition
       name="fade"
       @before-enter="beforeEnter"
       @after-leave="afterLeave"
-    >
+    > -->
+    <transition name="fade">
       <div v-if="isOpen" class="app-drawer">
         <header class="header">
           <button class="close-btn" @click="onClose">

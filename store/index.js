@@ -1,5 +1,4 @@
 export const state = () => ({
-  breadcrumb: [],
   currentRoute: '/',
   theme: {
     current: 'light',
@@ -91,9 +90,6 @@ export const actions = {
     elBody.classList.add(`${payload}-theme`)
     context.commit('setCurrentTheme', payload)
   },
-  setCurrentBreadcrumb(context, payload) {
-    context.commit('setCurrentBreadcrumb', payload)
-  },
 }
 
 export const mutations = {
@@ -111,8 +107,5 @@ export const mutations = {
   },
   setCurrentTheme(state, theme) {
     state.theme.current = theme
-  },
-  setCurrentBreadcrumb(state, breadcrumb) {
-    state.breadcrumb = breadcrumb
   },
 }

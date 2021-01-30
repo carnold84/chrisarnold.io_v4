@@ -1,10 +1,16 @@
 <template>
-  <div id="page-wrapper">
-    <div class="page-header-container">
-      <app-header />
+  <div
+    id="app-page"
+    :class="{
+      'light-theme': theme === 'light',
+      'dark-theme': theme === 'dark',
+    }"
+  >
+    <div class="app-page-header-container">
+      <app-header :breadcrumb="breadcrumb" />
     </div>
-    <div class="page-content">
-      <div class="page-content-inner">
+    <div class="app-page-content">
+      <div class="app-page-content-inner">
         <slot />
       </div>
     </div>
@@ -19,33 +25,52 @@ export default {
   components: {
     AppHeader,
   },
+  props: {
+    breadcrumb: {
+      default() {
+        return []
+      },
+      type: Array,
+    },
+    theme: {
+      default() {
+        return 'light'
+      },
+      type: String,
+    },
+  },
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/scss/_breakpoint.scss';
 
-.page-wrapper {
-  .light-theme & {
+#app-page {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+
+  &.light-theme {
     background-color: var(--light-color1);
     fill: var(--light-text-color1);
   }
 
-  .dark-theme & {
+  &.dark-theme {
     background-color: var(--dark-color1);
     fill: var(--dark-text-color1);
   }
 }
 
-.page-header-container {
+.app-page-header-container {
   background-color: transparent;
   position: fixed;
-  transition: background-color 100ms ease;
-  transition-delay: 200ms;
   width: 100%;
   z-index: 1;
 
   .light-theme & {
+    background-color: var(--light-color1);
+    fill: var(--light-text-color1);
+
     .page-enter &,
     .page-leave-to & {
       background-color: var(--light-color1);
@@ -53,6 +78,9 @@ export default {
   }
 
   .dark-theme & {
+    background-color: var(--dark-color1);
+    fill: var(--dark-text-color1);
+
     .page-enter &,
     .page-leave-to & {
       background-color: var(--dark-color1);
@@ -60,7 +88,7 @@ export default {
   }
 }
 
-.page-content {
+.app-page-content {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -77,18 +105,8 @@ export default {
   }
 }
 
-.page-content-inner {
+.app-page-content-inner {
   flex-grow: 1;
   position: relative;
-}
-
-.page-enter-active,
-.page-leave-active {
-  transition: opacity var(--page-transition-duration) ease !important;
-}
-
-.page-enter,
-.page-leave-to {
-  opacity: 0 !important;
 }
 </style>

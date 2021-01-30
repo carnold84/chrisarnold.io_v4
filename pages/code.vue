@@ -1,5 +1,5 @@
 <template>
-  <app-page>
+  <app-page :breadcrumb="breadcrumb" theme="dark">
     <div class="wrapper">
       <div class="content">
         <code-item
@@ -22,28 +22,25 @@ export default {
     CodeItem,
     AppPage,
   },
+  data() {
+    return {
+      breadcrumb: [
+        {
+          id: 'code-1',
+          label: 'Code',
+        },
+        {
+          id: 'code-2',
+          label: 'Projects & Experiments',
+        },
+      ],
+    }
+  },
   computed: {
     projects() {
+      console.log('projects', this.$store.state.projects)
       return this.$store.state.projects
     },
-  },
-  meta: {
-    breadcrumb: [
-      {
-        id: 'code-1',
-        label: 'Code',
-      },
-      {
-        id: 'code-2',
-        label: 'Projects & Experiments',
-      },
-    ],
-    theme: 'dark',
-  },
-  mounted() {
-    if (this.projects === undefined) {
-      this.$store.dispatch('getProjects')
-    }
   },
   methods: {
     isSelected(id) {
@@ -54,6 +51,13 @@ export default {
     },
   },
   transition: {
+    afterEnter(el) {
+      if (this.projects === undefined) {
+        console.log('afterEnter', this.projects)
+        this.$store.dispatch('getProjects')
+      }
+    },
+    mode: '',
     name: 'page',
   },
 }

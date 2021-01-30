@@ -1,67 +1,26 @@
 <template>
-  <app-drawer :is-open="isOpen" :on-close="onClose">
-    <ul class="nav-list">
-      <li class="nav-item">
-        <button
-          class="link"
-          :class="{ 'is-active': currentRoute === '/' }"
-          title="Home"
-          @click="(evt) => onSelect(evt, '/')"
-        >
-          Home
-        </button>
-      </li>
-      <li class="nav-item">
-        <button
-          class="link"
-          :class="{ 'is-active': currentRoute === '/code' }"
-          title="Code"
-          @click="(evt) => onSelect(evt, 'code')"
-        >
-          Code
-        </button>
-      </li>
-      <li class="nav-item">
-        <button
-          class="link"
-          :class="{ 'is-active': currentRoute === '/resources' }"
-          title="Resources"
-          @click="(evt) => onSelect(evt, 'resources')"
-        >
-          Resources
-        </button>
-      </li>
-    </ul>
-  </app-drawer>
+  <ul class="nav-list">
+    <li class="nav-item">
+      <router-link active-class="is-active" class="link" :exact="true" to="/">
+        Home
+      </router-link>
+    </li>
+    <li class="nav-item">
+      <router-link active-class="is-active" class="link" to="/code">
+        Code
+      </router-link>
+    </li>
+    <li class="nav-item">
+      <router-link active-class="is-active" class="link" to="/resources">
+        Resources
+      </router-link>
+    </li>
+  </ul>
 </template>
 
 <script>
-import AppDrawer from './AppDrawer.vue'
-
 export default {
   name: 'AppNav',
-  components: { AppDrawer },
-  props: {
-    isOpen: {
-      default: false,
-      type: Boolean,
-    },
-    onClose: {
-      required: true,
-      type: Function,
-    },
-  },
-  computed: {
-    currentRoute() {
-      return this.$store.state.currentRoute
-    },
-  },
-  methods: {
-    onSelect(evt, route) {
-      this.onClose()
-      this.$router.push(route)
-    },
-  },
 }
 </script>
 
@@ -69,9 +28,6 @@ export default {
 .nav-list {
   display: flex;
   list-style: none;
-  justify-content: space-between;
-  padding: 0 0 27px;
-  width: 100%;
 }
 
 .nav-item {
@@ -81,17 +37,35 @@ export default {
     color: var(--light-text-color2);
     cursor: pointer;
     font-family: var(--font-primary);
-    font-size: 2.9rem;
+    font-size: 1rem;
     font-weight: 300;
+    margin: 0 20px 0 0;
     padding: 0;
+    text-decoration: none;
     text-transform: uppercase;
 
-    &.is-active {
-      color: var(--light-text-color1);
+    .light-theme & {
+      color: var(--light-text-color2);
+
+      &.is-active {
+        color: var(--light-text-color1);
+      }
+
+      &:hover {
+        color: var(--light-text-color1);
+      }
     }
 
-    &:hover {
-      color: var(--light-text-color1);
+    .dark-theme & {
+      color: var(--dark-text-color2);
+
+      &.is-active {
+        color: var(--dark-text-color1);
+      }
+
+      &:hover {
+        color: var(--dark-text-color1);
+      }
     }
 
     &:focus {

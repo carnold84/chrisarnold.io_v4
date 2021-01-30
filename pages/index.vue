@@ -1,5 +1,5 @@
 <template>
-  <app-page>
+  <app-page :breadcrumb="breadcrumb" theme="light">
     <div class="wrapper">
       <div class="content">
         <section class="section">
@@ -15,16 +15,18 @@
 import AppPage from '~/components/AppPage.vue'
 export default {
   components: { AppPage },
+  data() {
+    return {
+      breadcrumb: [],
+    }
+  },
   computed: {
     content() {
       return this.$store.state.home
     },
   },
-  meta: {
-    breadcrumb: [],
-    theme: 'light',
-  },
   transition: {
+    mode: '',
     name: 'page',
   },
 }
