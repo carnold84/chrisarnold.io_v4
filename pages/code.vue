@@ -38,10 +38,10 @@ export default {
   },
   computed: {
     projects() {
-      console.log('projects', this.$store.state.projects)
       return this.$store.state.projects
     },
   },
+  meta: { theme: 'dark' },
   methods: {
     isSelected(id) {
       return this.selectedProject === id
@@ -53,7 +53,6 @@ export default {
   transition: {
     afterEnter(el) {
       if (this.projects === undefined) {
-        console.log('afterEnter', this.projects)
         this.$store.dispatch('getProjects')
       }
     },

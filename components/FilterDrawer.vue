@@ -23,18 +23,6 @@
                 d="M20.8388 6.69459L8.81799 18.7154L3.16113 13.0586L4.57113 11.6486L8.81799 15.8854L19.4288 5.28459L20.8388 6.69459Z"
               />
             </svg>
-            <svg
-              class="remove-icon"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41L17.59 5Z"
-              />
-            </svg>
           </span>
           {{ tag }}
         </li>
@@ -62,13 +50,14 @@ export default {
       required: true,
       type: Function,
     },
+    selectedTags: {
+      required: true,
+      type: Array,
+    },
     tags: {
       required: true,
       type: Array,
     },
-  },
-  data() {
-    return { selectedTags: this.tags }
   },
   computed: {
     currentRoute() {
@@ -78,16 +67,20 @@ export default {
   methods: {
     onSelectClick(evt, tag) {
       evt.preventDefault()
-      this.onClose()
+
+      let selectedTags = []
+      console.log(this.selectedTags, tag)
       if (this.selectedTags.includes(tag)) {
-        this.selectedTags = this.selectedTags.filter((element) => {
+        console.log('filter')
+        selectedTags = this.selectedTags.filter((element) => {
           return element !== tag
         })
       } else {
-        this.selectedTags.push(tag)
+        console.log('push')
+        selectedTags = [...this.selectedTags, tag]
       }
-      console.log(this.selectedTags)
-      this.onSelect({ selectedTags: this.selectedTags })
+      console.log(selectedTags)
+      this.onSelect({ selectedTags })
     },
   },
 }
@@ -112,6 +105,7 @@ export default {
   --gutter: 5px;
 
   display: flex;
+  flex-wrap: wrap;
   list-style: none;
   justify-content: center;
   margin: -var(--gutter);
@@ -135,6 +129,8 @@ export default {
   margin: var(--gutter);
   padding: 5px 20px;
   text-transform: uppercase;
+  transition: background-color var(--tag-anim-duration) ease-out,
+    border-color var(--tag-anim-duration) ease-out;
 
   .tag-icon {
     display: flex;
@@ -144,8 +140,7 @@ export default {
     width: 0;
   }
 
-  .add-icon,
-  .remove-icon {
+  .add-icon {
     fill: inherit;
     opacity: 0;
     position: absolute;
@@ -158,6 +153,15 @@ export default {
     border: 2px solid var(--light-focus);
     color: var(--dark-text-color1);
     fill: var(--light-text-focus);
+
+    .tag-icon {
+      width: 24px;
+    }
+
+    .add-icon {
+      opacity: 1;
+      transition-delay: 100ms;
+    }
   }
 
   &:hover {
@@ -169,11 +173,6 @@ export default {
 
     &.is-active {
       color: var(--dark-text-color1);
-
-      .remove-icon {
-        opacity: 1;
-        transition-delay: 100ms;
-      }
     }
 
     &:not(.is-active) {

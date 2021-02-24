@@ -46,7 +46,7 @@ export default {
 @import '@/assets/scss/_breakpoint.scss';
 
 #app-page {
-  height: 100%;
+  min-height: 100%;
   position: absolute;
   width: 100%;
 
@@ -66,26 +66,6 @@ export default {
   position: fixed;
   width: 100%;
   z-index: 1;
-
-  .light-theme & {
-    background-color: var(--light-color1);
-    fill: var(--light-text-color1);
-
-    .page-enter &,
-    .page-leave-to & {
-      background-color: var(--light-color1);
-    }
-  }
-
-  .dark-theme & {
-    background-color: var(--dark-color1);
-    fill: var(--dark-text-color1);
-
-    .page-enter &,
-    .page-leave-to & {
-      background-color: var(--dark-color1);
-    }
-  }
 }
 
 .app-page-content {

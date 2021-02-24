@@ -5,13 +5,14 @@
       :on-close="onHideFilters"
       :on-select="onSelectFilters"
       :is-open="showFilters"
+      :selected-tags="selectedTags"
       :tags="tags"
     ></filter-drawer>
     <div class="toolbar">
       <button v-if="!!tags" class="filter-btn" @click="onShowFilters">
         <svg
-          width="24"
-          height="24"
+          width="22"
+          height="22"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -23,7 +24,15 @@
     </div>
     <div class="content">
       <div v-if="items === undefined">Loading...</div>
-      <resource-item v-for="item in items" :key="item.id" :item="item" />
+      <h3 v-if="items && items.length === 0" class="message">
+        You turned all the tags off!
+      </h3>
+      <resource-item
+        v-for="item in items"
+        :key="item.id"
+        :item="item"
+        @select="onTagSelect"
+      />
     </div>
   </div>
 </template>
@@ -33,11 +42,6 @@ import ResourceItem from '~/components/ResourceItem.vue'
 import FilterDrawer from '~/components/FilterDrawer.vue'
 
 export default {
-  calculated: {
-    tags() {
-      return this.$store.state.tags
-    },
-  },
   components: { ResourceItem, FilterDrawer },
   props: {
     items: {
@@ -55,18 +59,34 @@ export default {
   },
   data() {
     return {
+      selectedTags: this.tags,
       showFilters: false,
     }
+  },
+  watch: {
+    tags(newTags, oldTags) {
+      console.log('newTags', newTags)
+      this.selectedTags = [...newTags]
+    },
   },
   methods: {
     onHideFilters() {
       this.showFilters = false
     },
     onSelectFilters(filters) {
+      this.selectedTags = filters.selectedTags
+      console.log(this.selectedTags)
       this.onTagsChange(filters.selectedTags)
     },
     onShowFilters() {
       this.showFilters = true
+    },
+    onTagSelect(tag) {
+      console.log(tag, this.selectedTags)
+      this.selectedTags = this.selectedTags.filter((selectedTag) => {
+        return selectedTag === tag
+      })
+      this.onTagsChange(this.selectedTags)
     },
   },
 }
@@ -110,5 +130,16 @@ export default {
   & > * {
     margin: 0 0 20px;
   }
+}
+
+.message {
+  align-items: center;
+  color: var(--light-text-color2);
+  display: flex;
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 300;
+  height: 300px;
+  justify-content: center;
 }
 </style>

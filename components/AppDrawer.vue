@@ -124,6 +124,10 @@ export default {
   align-items: center;
   display: flex;
   flex-grow: 1;
-  padding: 0 60px;
+  padding: 0;
+
+  @include breakpoint('md') {
+    padding: 0 60px;
+  }
 }
 </style>

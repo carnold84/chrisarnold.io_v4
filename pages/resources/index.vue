@@ -39,6 +39,7 @@ export default {
       return this.$store.state.tags
     },
   },
+  meta: { theme: 'light' },
   watch: {
     tags(newTags, oldTags) {
       console.log('newTags', newTags)

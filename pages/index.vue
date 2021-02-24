@@ -1,5 +1,5 @@
 <template>
-  <app-page :breadcrumb="breadcrumb" theme="light">
+  <app-page :breadcrumb="breadcrumb" theme="dark">
     <div class="wrapper">
       <div class="content">
         <section class="section">
@@ -25,6 +25,7 @@ export default {
       return this.$store.state.home
     },
   },
+  meta: { theme: 'dark' },
   transition: {
     mode: '',
     name: 'page',
@@ -54,13 +55,15 @@ export default {
 }
 
 .heading {
+  color: var(--dark-text-color1);
   font-size: 6rem;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 6rem;
   margin: 0 0 25px;
 }
 
 .sub-heading {
+  color: var(--dark-text-color1);
   font-size: 2.2rem;
   font-weight: 400;
   line-height: 2.6rem;
@@ -73,6 +76,7 @@ export default {
 }
 
 .paragraph {
+  color: var(--dark-text-color2);
   font-size: 1.3rem;
   font-weight: 400;
   line-height: 2.2rem;

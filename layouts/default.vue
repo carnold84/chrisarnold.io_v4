@@ -60,9 +60,9 @@ body {
   margin: 0;
   overflow-y: scroll;
   padding: 0;
-  //transition: background-color var(--page-transition-duration) ease;
+  transition: background-color var(--page-transition-duration) ease;
 
-  &.no-scroll {
+  /* &.no-scroll {
     overflow: hidden;
   }
 
@@ -77,33 +77,33 @@ body {
 
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
-  }
+  } */
 
-  /* &.light-theme {
+  &.light-theme {
     background-color: var(--light-color1);
 
-    &::-webkit-scrollbar-track {
+    /* &::-webkit-scrollbar-track {
       background-color: var(--light-color1);
       border-color: var(--light-color1);
     }
 
     &::-webkit-scrollbar-thumb {
       background-color: rgba(0, 0, 0, 0.25);
-    }
+    } */
   }
 
   &.dark-theme {
     background-color: var(--dark-color1);
 
-    &::-webkit-scrollbar-track {
+    /* &::-webkit-scrollbar-track {
       background-color: var(--dark-color1);
       border-color: var(--dark-color1);
     }
 
     &::-webkit-scrollbar-thumb {
       background-color: rgba(0, 0, 0, 0.25);
-    }
-  } */
+    } */
+  }
 }
 
 .markdown-body {
