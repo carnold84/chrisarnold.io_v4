@@ -1,16 +1,12 @@
 export const state = () => ({
+  about: undefined,
   currentRoute: '/',
+  home: undefined,
+  projects: undefined,
+  resources: undefined,
   theme: {
     current: 'light',
   },
-  home: {
-    body:
-      "I'm Chris, a front-end developer and designer from New Zealand. I like to write clean, elegant, functional code and partner it with clean, beautiful design and well thought out, user-friendly interfaces.",
-    description: 'Test description',
-    title: 'Hello',
-  },
-  projects: undefined,
-  resources: undefined,
   tags: undefined,
 })
 
@@ -49,6 +45,20 @@ export const getters = {
 }
 
 export const actions = {
+  async getAbout(context) {
+    const response = await this.$axios.$get(`${process.env.apiUrl}/items/about`)
+
+    console.log(response)
+
+    context.commit('addAbout', response.data[0])
+  },
+  async getHome(context) {
+    const response = await this.$axios.$get(`${process.env.apiUrl}/items/home`)
+
+    console.log(response)
+
+    context.commit('addHome', response.data[0])
+  },
   async getProjects(context) {
     const response = await this.$axios.$get(
       `${process.env.apiUrl}/items/projects`
@@ -93,6 +103,12 @@ export const actions = {
 }
 
 export const mutations = {
+  addAbout(state, about) {
+    state.about = about
+  },
+  addHome(state, home) {
+    state.home = home
+  },
   addProjects(state, projects) {
     state.projects = projects
   },

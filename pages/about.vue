@@ -1,32 +1,9 @@
 <template>
   <app-page :breadcrumb="breadcrumb" theme="light">
-    <div class="wrapper">
-      <h1 class="heading">About Me.</h1>
-      <p class="paragraph">
-        I started out getting a Bachelor of Design (Visual Communication Design)
-        in 2006, but I have always been fascinated by technology, computers and,
-        particularly, the internet.
-      </p>
-      <p class="paragraph">
-        After completing my degree I got a job developing interactive medical
-        animations in Adobe Flash. From there I taught myself Actionscript 3.0
-        and moved onto developing more complex applications including early
-        augmented reality in the browser. I also learnt HTML, CSS and JQuery.
-      </p>
-      <p class="paragraph">
-        In 2011 I moved to Melbourne, Australia and started work as a front-end
-        developer for a small design agency building websites and applications
-        in HTML, CSS, JQuery and Flash, and integrating with PHP backends.
-      </p>
-      <p class="paragraph">
-        In 2014 I moved to London, UK and started work for a company building
-        set-top boxes for televisions. The UI was built in HTML, CSS, and plain
-        javascript, and ran in a customised version of Chrome browser. This was
-        a fascinating project and I learned a vast amount. From achieving
-        complex functionality in plain javascript and no libraries, to
-        integrating with platform apis, and squeezing the maximum performance
-        from relatively under-powered hardware.
-      </p>
+    <div v-if="about === undefined">Loading...</div>
+    <div v-else class="wrapper">
+      <h1 class="heading">{{ about.title }}</h1>
+      <span class="about-content" v-html="about.content"></span>
     </div>
   </app-page>
 </template>
@@ -53,8 +30,18 @@ export default {
       theme: 'light',
     }
   },
+  computed: {
+    about() {
+      return this.$store.state.about
+    },
+  },
   meta: { theme: 'light' },
   transition: {
+    afterEnter(el) {
+      if (this.about === undefined) {
+        this.$store.dispatch('getAbout')
+      }
+    },
     mode: '',
     name: 'page',
   },
@@ -79,13 +66,17 @@ export default {
   line-height: 6rem;
   margin: 0 0 25px;
 }
+</style>
 
-.paragraph {
+<style lang="scss">
+@import '@/assets/scss/_breakpoint.scss';
+
+.about-content p {
   color: var(--light-text-color2);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.7rem;
-  margin: 0 0 10px;
+  margin: 0 0 1.7rem;
   text-align: justify;
 
   @include breakpoint('sm') {
