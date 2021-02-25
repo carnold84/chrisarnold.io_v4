@@ -31,18 +31,15 @@ export default {
   },
   computed: {
     resources() {
-      console.log(this.selectedTags)
       return this.$store.getters.resourcesByTags(this.selectedTags)
     },
     tags() {
-      console.log(this.$store.state.tags)
       return this.$store.state.tags
     },
   },
   meta: { theme: 'light' },
   watch: {
-    tags(newTags, oldTags) {
-      console.log('newTags', newTags)
+    tags(newTags) {
       this.selectedTags = [...newTags]
     },
   },

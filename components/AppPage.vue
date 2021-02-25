@@ -62,10 +62,22 @@ export default {
 }
 
 .app-page-header-container {
-  background-color: transparent;
   position: fixed;
   width: 100%;
   z-index: 1;
+
+  .light-theme & {
+    background-color: var(--light-color1);
+  }
+
+  .dark-theme & {
+    background-color: var(--dark-color1);
+  }
+
+  .page-enter-active &,
+  .page-leave-active & {
+    background-color: transparent;
+  }
 }
 
 .app-page-content {

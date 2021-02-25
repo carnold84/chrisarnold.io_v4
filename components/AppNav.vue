@@ -6,6 +6,11 @@
       </router-link>
     </li>
     <li class="nav-item">
+      <router-link active-class="is-active" class="link" to="/about">
+        About
+      </router-link>
+    </li>
+    <li class="nav-item">
       <router-link active-class="is-active" class="link" to="/code">
         Code
       </router-link>
@@ -39,7 +44,7 @@ export default {
     font-family: var(--font-primary);
     font-size: 1rem;
     font-weight: 300;
-    margin: 0 20px 0 0;
+    margin: 0 25px 0 0;
     padding: 0;
     text-decoration: none;
     text-transform: uppercase;
