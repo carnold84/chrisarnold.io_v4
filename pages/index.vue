@@ -1,19 +1,21 @@
 <template>
-  <app-page :breadcrumb="breadcrumb" theme="dark">
-    <div v-if="home === undefined">Loading...</div>
-    <div v-else class="wrapper">
-      <div class="content">
-        <section class="section">
-          <h1 class="heading">{{ home.title }}</h1>
-          <span class="home-content" v-html="home.content"></span>
-        </section>
-      </div>
+  <app-page
+    :breadcrumb="breadcrumb"
+    :is-loading="home === undefined"
+    theme="dark"
+  >
+    <div v-if="home !== undefined" class="wrapper">
+      <section class="section">
+        <h1 class="heading">{{ home.title }}</h1>
+        <span class="home-content" v-html="home.content"></span>
+      </section>
     </div>
   </app-page>
 </template>
 
 <script>
 import AppPage from '~/components/AppPage.vue'
+
 export default {
   components: { AppPage },
   data() {
@@ -27,6 +29,19 @@ export default {
     },
   },
   meta: { theme: 'dark' },
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Chris Arnold - Front-end developer and designer working in Javascript, HTML, CSS, React, Vue, Node and more.',
+        },
+      ],
+      title: 'ChrisArnold.io',
+    }
+  },
   transition: {
     afterEnter() {
       if (this.home === undefined) {
@@ -48,16 +63,11 @@ export default {
   flex-direction: column;
   height: 100%;
   justify-content: center;
+  max-width: 960px;
   opacity: 1;
   position: absolute;
   width: 100%;
   z-index: 0;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-  max-width: 960px;
 }
 
 .heading {

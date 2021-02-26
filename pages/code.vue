@@ -1,5 +1,9 @@
 <template>
-  <app-page :breadcrumb="breadcrumb" theme="dark">
+  <app-page
+    :breadcrumb="breadcrumb"
+    :is-loading="projects === undefined"
+    theme="dark"
+  >
     <div class="wrapper">
       <div class="content">
         <code-item
@@ -49,6 +53,19 @@ export default {
     onCodeClick(id) {
       this.selectedProject = id
     },
+  },
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Experiments and projects built using HTML, CSS, Javascript, React, Vue, Angular and more.',
+        },
+      ],
+      title: 'Code - ChrisArnold.io',
+    }
   },
   transition: {
     afterEnter(el) {

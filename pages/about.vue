@@ -1,7 +1,10 @@
 <template>
-  <app-page :breadcrumb="breadcrumb" theme="light">
-    <div v-if="about === undefined">Loading...</div>
-    <div v-else class="wrapper">
+  <app-page
+    :breadcrumb="breadcrumb"
+    :is-loading="about === undefined"
+    theme="light"
+  >
+    <div v-if="about !== undefined" class="wrapper">
       <h1 class="heading">{{ about.title }}</h1>
       <span class="about-content" v-html="about.content"></span>
     </div>

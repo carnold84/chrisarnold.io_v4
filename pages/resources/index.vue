@@ -1,5 +1,9 @@
 <template>
-  <app-page :breadcrumb="breadcrumb" theme="light">
+  <app-page
+    :breadcrumb="breadcrumb"
+    :is-loading="resources === undefined"
+    theme="light"
+  >
     <resources-page
       :items="resources"
       :on-tags-change="onTagsChange"
@@ -18,12 +22,12 @@ export default {
     return {
       breadcrumb: [
         {
-          id: 'code-1',
-          label: 'Code',
+          id: 'resources-1',
+          label: 'Resources',
         },
         {
-          id: 'code-2',
-          label: 'Projects & Experiments',
+          id: 'resources-2',
+          label: 'Useful Links',
         },
       ],
       selectedTags: this.tags || [],
@@ -56,6 +60,20 @@ export default {
     onTagsChange(tags) {
       this.selectedTags = [...tags]
     },
+  },
+  head() {
+    return {
+      meta: [
+        // hid is used as unique identifier. Do not use `vmid` for it as it will not work
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Resources, useful links, libraries, frameworks and articles.',
+        },
+      ],
+      title: 'Resources - ChrisArnold.io',
+    }
   },
   transition: {
     mode: '',

@@ -4,12 +4,14 @@
     :class="{
       'light-theme': theme === 'light',
       'dark-theme': theme === 'dark',
+      'is-loading': isLoading === true,
     }"
   >
     <div class="app-page-header-container">
       <app-header :breadcrumb="breadcrumb" />
     </div>
-    <div class="app-page-content">
+    <app-loading v-if="isLoading"></app-loading>
+    <div v-else class="app-page-content">
       <div class="app-page-content-inner">
         <slot />
       </div>
@@ -19,11 +21,13 @@
 
 <script>
 import AppHeader from '~/components/AppHeader.vue'
+import AppLoading from '~/components/AppLoading'
 
 export default {
   name: 'AppPage',
   components: {
     AppHeader,
+    AppLoading,
   },
   props: {
     breadcrumb: {
@@ -31,6 +35,12 @@ export default {
         return []
       },
       type: Array,
+    },
+    isLoading: {
+      default() {
+        return true
+      },
+      type: Boolean,
     },
     theme: {
       default() {
@@ -74,6 +84,7 @@ export default {
     background-color: var(--dark-color1);
   }
 
+  .is-loading &,
   .page-enter-active &,
   .page-leave-active & {
     background-color: transparent;
