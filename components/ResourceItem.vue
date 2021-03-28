@@ -32,7 +32,6 @@ export default {
       })
     },
     onSelect(tag) {
-      console.log(this.item, tag)
       this.$emit('select', tag)
     },
   },
@@ -58,7 +57,7 @@ export default {
     color: var(--light-text-color1);
   }
 
-  @include breakpoint('xs') {
+  @include breakpoint('sm') {
     flex-direction: row;
   }
 }
@@ -95,11 +94,12 @@ export default {
   padding: 0 20px 20px;
   position: relative;
 
-  @include breakpoint('xs') {
-    padding: 0;
-    position: absolute;
-    right: 25px;
-    top: 23px;
+  @include breakpoint('sm') {
+    padding: 0 25px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
 }
 

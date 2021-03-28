@@ -7,17 +7,19 @@
     <div v-if="home !== undefined" class="wrapper">
       <section class="section">
         <h1 class="heading">{{ home.title }}</h1>
-        <span class="home-content" v-html="home.content"></span>
+        <vue-markdown :source="home.content"></vue-markdown>
       </section>
     </div>
   </app-page>
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
+
 import AppPage from '~/components/AppPage.vue'
 
 export default {
-  components: { AppPage },
+  components: { AppPage, VueMarkdown },
   data() {
     return {
       breadcrumb: [],
@@ -98,19 +100,11 @@ export default {
 }
 
 .section {
-  margin: 0 0 40px;
-}
-</style>
-
-<style lang="scss">
-@import '@/assets/scss/_breakpoint.scss';
-
-.home-content p {
   color: var(--dark-text-color2);
   font-size: 1.3rem;
   font-weight: 400;
   line-height: 2.2rem;
-  margin: 0 0 10px;
+  margin: 0 0 40px;
   text-align: justify;
 
   @include breakpoint('sm') {

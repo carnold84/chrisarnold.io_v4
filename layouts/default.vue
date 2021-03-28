@@ -31,11 +31,11 @@ export default {
   --dark-color6: #2f373c;
   --dark-focus: rgb(185, 78, 247);
   --dark-text-focus: #1c2227;
-  --light-text-color1: rgba(0, 0, 0, 0.8);
+  --light-text-color1: rgba(0, 0, 0, 0.7);
   --light-text-color2: rgba(0, 0, 0, 0.5);
   --light-text-color3: rgba(0, 0, 0, 0.3);
   --dark-text-color1: rgba(255, 255, 255, 1);
-  --dark-text-color2: rgba(255, 255, 255, 0.5);
+  --dark-text-color2: rgba(255, 255, 255, 0.65);
   --dark-text-color3: rgba(255, 255, 255, 0.3);
 
   --page-transition-duration: 1000ms;
@@ -107,13 +107,30 @@ body {
 }
 
 .markdown-body {
-  color: var(--dark-text-color2);
-
   a,
   a:link,
   a:visited {
-    color: var(--dark-text-color1);
     text-decoration: none;
+  }
+
+  .light-theme & {
+    color: var(--light-text-color2);
+
+    a,
+    a:link,
+    a:visited {
+      color: var(--light-text-color1);
+    }
+  }
+
+  .dark-theme & {
+    color: var(--dark-text-color2);
+
+    a,
+    a:link,
+    a:visited {
+      color: var(--dark-text-color1);
+    }
   }
 }
 

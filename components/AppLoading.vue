@@ -19,6 +19,7 @@ export default {
 
 .app-loading {
   align-items: center;
+  animation: fade 1200ms ease-in-out 0ms infinite;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -26,9 +27,15 @@ export default {
   position: absolute;
   width: 100%;
 
-  @keyframes draw {
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
     100% {
-      stroke-dashoffset: 0;
+      opacity: 0;
     }
   }
 

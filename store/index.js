@@ -25,8 +25,6 @@ export const getters = {
       return
     }
 
-    console.log(selectedTags)
-
     return state.resources.filter(({ tags }) => {
       let hasTag = false
 
@@ -48,14 +46,10 @@ export const actions = {
   async getAbout(context) {
     const response = await this.$axios.$get(`${process.env.apiUrl}/items/about`)
 
-    console.log(response)
-
     context.commit('addAbout', response.data[0])
   },
   async getHome(context) {
     const response = await this.$axios.$get(`${process.env.apiUrl}/items/home`)
-
-    console.log(response)
 
     context.commit('addHome', response.data[0])
   },

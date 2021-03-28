@@ -92,6 +92,7 @@ export default {
 }
 
 .app-page-content {
+  align-items: center;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -109,7 +110,10 @@ export default {
 }
 
 .app-page-content-inner {
+  display: flex;
   flex-grow: 1;
+  justify-content: center;
   position: relative;
+  width: 100%;
 }
 </style>

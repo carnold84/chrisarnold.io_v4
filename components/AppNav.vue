@@ -1,23 +1,13 @@
 <template>
   <ul class="nav-list">
-    <li class="nav-item">
-      <router-link active-class="is-active" class="link" :exact="true" to="/">
-        Home
-      </router-link>
-    </li>
-    <li class="nav-item">
-      <router-link active-class="is-active" class="link" to="/about">
-        About
-      </router-link>
-    </li>
-    <li class="nav-item">
-      <router-link active-class="is-active" class="link" to="/code">
-        Code
-      </router-link>
-    </li>
-    <li class="nav-item">
-      <router-link active-class="is-active" class="link" to="/resources">
-        Resources
+    <li v-for="item in items" :key="item.id" class="nav-item">
+      <router-link
+        active-class="is-active"
+        class="link"
+        :exact="item.path === '/'"
+        :to="item.path"
+      >
+        {{ item.label }}
       </router-link>
     </li>
   </ul>
@@ -26,6 +16,12 @@
 <script>
 export default {
   name: 'AppNav',
+  props: {
+    items: {
+      required: true,
+      type: Array,
+    },
+  },
 }
 </script>
 

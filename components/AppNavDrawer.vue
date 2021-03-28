@@ -1,34 +1,14 @@
 <template>
   <app-drawer :is-open="isOpen" :on-close="onClose">
     <ul class="nav-list">
-      <li class="nav-item">
+      <li v-for="item in items" :key="item.id" class="nav-item">
         <button
           class="link"
-          :class="{ 'is-active': currentRoute === '/' }"
-          title="Home"
-          @click="(evt) => onSelect(evt, '/')"
+          :class="{ 'is-active': currentRoute === item.path }"
+          :title="item.label"
+          @click="(evt) => onSelect(evt, item.path)"
         >
-          Home
-        </button>
-      </li>
-      <li class="nav-item">
-        <button
-          class="link"
-          :class="{ 'is-active': currentRoute === '/code' }"
-          title="Code"
-          @click="(evt) => onSelect(evt, 'code')"
-        >
-          Code
-        </button>
-      </li>
-      <li class="nav-item">
-        <button
-          class="link"
-          :class="{ 'is-active': currentRoute === '/resources' }"
-          title="Resources"
-          @click="(evt) => onSelect(evt, 'resources')"
-        >
-          Resources
+          {{ item.label }}
         </button>
       </li>
     </ul>
@@ -45,6 +25,10 @@ export default {
     isOpen: {
       default: false,
       type: Boolean,
+    },
+    items: {
+      required: true,
+      type: Array,
     },
     onClose: {
       required: true,
@@ -66,12 +50,21 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/assets/scss/_breakpoint.scss';
+
 .nav-list {
+  align-items: center;
   display: flex;
+  flex-direction: column;
   list-style: none;
-  justify-content: space-between;
   padding: 0 0 27px;
   width: 100%;
+
+  @include breakpoint('md') {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .nav-item {
@@ -83,8 +76,13 @@ export default {
     font-family: var(--font-primary);
     font-size: 2.9rem;
     font-weight: 300;
+    margin: 0 0 20px;
     padding: 0;
     text-transform: uppercase;
+
+    @include breakpoint('md') {
+      margin: 0;
+    }
 
     &.is-active {
       color: var(--light-text-color1);

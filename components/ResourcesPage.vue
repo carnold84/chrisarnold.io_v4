@@ -65,7 +65,6 @@ export default {
   },
   watch: {
     tags(newTags, oldTags) {
-      console.log('newTags', newTags)
       this.selectedTags = [...newTags]
     },
   },
@@ -75,14 +74,12 @@ export default {
     },
     onSelectFilters(filters) {
       this.selectedTags = filters.selectedTags
-      console.log(this.selectedTags)
       this.onTagsChange(filters.selectedTags)
     },
     onShowFilters() {
       this.showFilters = true
     },
     onTagSelect(tag) {
-      console.log(tag, this.selectedTags)
       this.selectedTags = this.selectedTags.filter((selectedTag) => {
         return selectedTag === tag
       })

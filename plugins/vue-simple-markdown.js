@@ -1,4 +1,4 @@
 import Vue from 'vue'
-import VueSimpleMarkdown from 'vue-simple-markdown'
+import VueMarkdown from 'vue-markdown'
 
-Vue.use(VueSimpleMarkdown)
+Vue.use(VueMarkdown)

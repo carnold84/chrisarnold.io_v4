@@ -69,17 +69,15 @@ export default {
       evt.preventDefault()
 
       let selectedTags = []
-      console.log(this.selectedTags, tag)
+
       if (this.selectedTags.includes(tag)) {
-        console.log('filter')
         selectedTags = this.selectedTags.filter((element) => {
           return element !== tag
         })
       } else {
-        console.log('push')
         selectedTags = [...this.selectedTags, tag]
       }
-      console.log(selectedTags)
+
       this.onSelect({ selectedTags })
     },
   },

@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="content-end">
-      <app-nav class="main-nav" />
+      <app-nav :items="menuItems" class="main-nav" />
       <button class="menu-btn" @click="isMenuOpen = !isMenuOpen">
         <svg
           class="menu-icon"
@@ -36,6 +36,7 @@
     <app-nav-drawer
       class="nav-drawer"
       :is-open="isMenuOpen"
+      :items="menuItems"
       :on-close="onCloseMenu"
     />
   </div>
@@ -64,6 +65,28 @@ export default {
   data() {
     return {
       isMenuOpen: false,
+      menuItems: [
+        {
+          id: 'home',
+          label: 'Home',
+          path: '/',
+        },
+        {
+          id: 'about',
+          label: 'About',
+          path: '/about',
+        },
+        {
+          id: 'code',
+          label: 'Code',
+          path: '/code',
+        },
+        {
+          id: 'resources',
+          label: 'Resources',
+          path: '/resources',
+        },
+      ],
     }
   },
   methods: {

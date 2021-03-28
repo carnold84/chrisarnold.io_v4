@@ -3,7 +3,7 @@
     <p class="code-item-number">{{ paddedNumber }}.</p>
     <h2 class="code-item-header">{{ item.name }}</h2>
     <div class="code-item-content">
-      <vue-simple-markdown :source="item.description"></vue-simple-markdown>
+      <vue-markdown :source="item.description"></vue-markdown>
     </div>
     <p class="code-item-meta"><span>Tags:</span> {{ formattedTags }}</p>
     <div class="code-item-links">
@@ -57,8 +57,11 @@
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
+
 export default {
   name: 'CodeItem',
+  components: { VueMarkdown },
   props: {
     item: {
       required: true,
@@ -100,7 +103,7 @@ export default {
   padding: 40px;
   width: 100%;
 
-  @include breakpoint('lg') {
+  @include breakpoint('md') {
     grid-template-areas:
       'number header header header'
       'number content content content'
@@ -145,19 +148,24 @@ export default {
   grid-area: content;
   line-height: 1.8rem;
   margin: 0 0 20px;
+
+  ::v-deep a,
+  ::v-deep a:link,
+  ::v-deep a:visited {
+    color: var(--dark-text-color1);
+  }
 }
 
 .code-item-meta {
+  color: var(--dark-text-color2);
+  font-size: 1.1rem;
+  font-weight: 400;
   grid-area: meta;
+  line-height: 1.5rem;
 
   span {
     color: var(--dark-text-color3);
   }
-
-  color: var(--dark-text-color2);
-  font-size: 1.1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
 
   @include breakpoint('sm') {
     margin: 0 0 20px;

@@ -6,17 +6,22 @@
   >
     <div v-if="about !== undefined" class="wrapper">
       <h1 class="heading">{{ about.title }}</h1>
-      <span class="about-content" v-html="about.content"></span>
+      <div class="content">
+        <vue-markdown :source="about.content"></vue-markdown>
+      </div>
     </div>
   </app-page>
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown'
+
 import AppPage from '~/components/AppPage.vue'
 
 export default {
   components: {
     AppPage,
+    VueMarkdown,
   },
   data() {
     return {
@@ -35,8 +40,21 @@ export default {
   },
   computed: {
     about() {
+      console.log(this.$store.state.about)
       return this.$store.state.about
     },
+  },
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'About me, work history and qualifications.',
+        },
+      ],
+      title: 'About - ChrisArnold.io',
+    }
   },
   meta: { theme: 'light' },
   transition: {
@@ -57,6 +75,7 @@ export default {
 .wrapper {
   display: flex;
   flex-direction: column;
+  max-width: 960px;
   opacity: 1;
   padding: 40px 0 0;
   position: relative;
@@ -69,12 +88,8 @@ export default {
   line-height: 6rem;
   margin: 0 0 25px;
 }
-</style>
 
-<style lang="scss">
-@import '@/assets/scss/_breakpoint.scss';
-
-.about-content p {
+.content {
   color: var(--light-text-color2);
   font-size: 1rem;
   font-weight: 400;
