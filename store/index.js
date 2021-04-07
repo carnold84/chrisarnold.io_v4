@@ -55,7 +55,7 @@ export const actions = {
   },
   async getProjects(context) {
     const response = await this.$axios.$get(
-      `${process.env.apiUrl}/items/projects`
+      `${process.env.apiUrl}/items/projects?fields=*,tags.*`
     )
 
     context.commit('addProjects', response.data)

@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="resources-page">
     <filter-drawer
       v-if="!!tags"
       :on-close="onHideFilters"
@@ -30,7 +30,9 @@
       <resource-item
         v-for="item in items"
         :key="item.id"
-        :item="item"
+        :link="item.link"
+        :name="item.name"
+        :tags="item.tags"
         @select="onTagSelect"
       />
     </div>
@@ -92,7 +94,7 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/scss/_breakpoint.scss';
 
-.wrapper {
+.resources-page {
   display: flex;
   flex-direction: column;
   position: relative;

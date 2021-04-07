@@ -96,7 +96,7 @@ export default {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding: 155px 40px 40px;
+  padding: 155px 30px 30px;
   position: relative;
   z-index: 0;
 

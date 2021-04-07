@@ -1,16 +1,16 @@
 <template>
   <div class="code-item">
     <p class="code-item-number">{{ paddedNumber }}.</p>
-    <h2 class="code-item-header">{{ item.name }}</h2>
+    <h2 class="code-item-header">{{ title }}</h2>
     <div class="code-item-content">
-      <vue-markdown :source="item.description"></vue-markdown>
+      <nuxt-content class="content" :document="description" />
     </div>
-    <p class="code-item-meta"><span>Tags:</span> {{ formattedTags }}</p>
+    <p class="code-item-meta"><span>Tags:</span> {{ tags }}</p>
     <div class="code-item-links">
       <a
-        v-if="item.repo_url && item.repo_url !== ''"
+        v-if="repoUrl && repoUrl !== ''"
         class="code-item-link"
-        :href="item.repo_url"
+        :href="repoUrl"
         rel="noopener"
         target="_blank"
       >
@@ -33,9 +33,9 @@
         <span>Code</span>
       </a>
       <a
-        v-if="item.demo_url && item.demo_url !== ''"
+        v-if="demoUrl && demoUrl !== ''"
         class="code-item-link"
-        :href="item.demo_url"
+        :href="demoUrl"
         rel="noopener"
         target="_blank"
       >
@@ -57,13 +57,14 @@
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown'
-
 export default {
   name: 'CodeItem',
-  components: { VueMarkdown },
   props: {
-    item: {
+    demoUrl: {
+      default: undefined,
+      type: String,
+    },
+    description: {
       required: true,
       type: Object,
     },
@@ -71,11 +72,20 @@ export default {
       required: true,
       type: Number,
     },
+    repoUrl: {
+      default: undefined,
+      type: String,
+    },
+    tags: {
+      default: undefined,
+      type: String,
+    },
+    title: {
+      required: true,
+      type: String,
+    },
   },
   computed: {
-    formattedTags() {
-      return this.item.tags.join(', ')
-    },
     paddedNumber() {
       const number = this.number
       return number < 10 ? `0${number}` : number
@@ -124,7 +134,7 @@ export default {
   margin: 0 0 10px;
   width: 100%;
 
-  @include breakpoint('lg') {
+  @include breakpoint('md') {
     display: flex;
   }
 }

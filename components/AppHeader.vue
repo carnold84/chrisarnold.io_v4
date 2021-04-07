@@ -2,7 +2,7 @@
   <div class="app-header">
     <div class="content-start">
       <div class="title">
-        <nuxt-link to="/">
+        <nuxt-link aria-label="Home" to="/">
           <AppLogo />
         </nuxt-link>
         <div v-if="breadcrumb.length > 0" class="breadcrumbs">
@@ -18,7 +18,11 @@
     </div>
     <div class="content-end">
       <app-nav :items="menuItems" class="main-nav" />
-      <button class="menu-btn" @click="isMenuOpen = !isMenuOpen">
+      <button
+        aria-label="Open Menu"
+        class="menu-btn"
+        @click="isMenuOpen = !isMenuOpen"
+      >
         <svg
           class="menu-icon"
           fill="none"
@@ -107,7 +111,7 @@ export default {
   flex-shrink: 0;
   justify-content: space-between;
   margin: 0;
-  padding: 40px 50px;
+  padding: 30px;
   width: 100%;
 
   @include breakpoint('lg') {

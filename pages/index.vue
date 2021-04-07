@@ -1,34 +1,35 @@
 <template>
   <app-page
     :breadcrumb="breadcrumb"
-    :is-loading="home === undefined"
+    :is-loading="data === undefined"
     theme="dark"
   >
-    <div v-if="home !== undefined" class="wrapper">
+    <div v-if="data !== undefined" class="home">
       <section class="section">
-        <h1 class="heading">{{ home.title }}</h1>
-        <vue-markdown :source="home.content"></vue-markdown>
+        <page-title class="heading">{{ data.title }}</page-title>
+        <nuxt-content :document="data" />
       </section>
     </div>
   </app-page>
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown'
-
 import AppPage from '~/components/AppPage.vue'
+import PageTitle from '~/components/PageTitle.vue'
 
 export default {
-  components: { AppPage, VueMarkdown },
+  components: { AppPage, PageTitle },
+  async asyncData({ $content }) {
+    const data = await $content('home').fetch()
+
+    return {
+      data,
+    }
+  },
   data() {
     return {
       breadcrumb: [],
     }
-  },
-  computed: {
-    home() {
-      return this.$store.state.home
-    },
   },
   meta: { theme: 'dark' },
   head() {
@@ -45,11 +46,6 @@ export default {
     }
   },
   transition: {
-    afterEnter() {
-      if (this.home === undefined) {
-        this.$store.dispatch('getHome')
-      }
-    },
     mode: '',
     name: 'page',
   },
@@ -59,7 +55,7 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/scss/_breakpoint.scss';
 
-.wrapper {
+.home {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -74,29 +70,6 @@ export default {
 
 .heading {
   color: var(--dark-text-color1);
-  font-size: 6rem;
-  font-weight: 400;
-  line-height: 6rem;
-  margin: 0 0 25px;
-}
-
-.paragraph {
-  color: var(--dark-text-color2);
-  font-size: 1.3rem;
-  font-weight: 400;
-  line-height: 2.2rem;
-  margin: 0 0 10px;
-  text-align: justify;
-
-  @include breakpoint('sm') {
-    font-size: 1.3rem;
-    line-height: 2rem;
-  }
-
-  @include breakpoint('md') {
-    font-size: 1.3rem;
-    line-height: 2.2rem;
-  }
 }
 
 .section {
