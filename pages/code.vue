@@ -46,20 +46,7 @@ export default {
       breadcrumb: [],
     }
   },
-  computed: {
-    projects() {
-      return this.$store.state.projects
-    },
-  },
   meta: { theme: 'dark' },
-  methods: {
-    isSelected(id) {
-      return this.selectedProject === id
-    },
-    onCodeClick(id) {
-      this.selectedProject = id
-    },
-  },
   head() {
     return {
       meta: [
@@ -74,11 +61,6 @@ export default {
     }
   },
   transition: {
-    afterEnter(el) {
-      if (this.projects === undefined) {
-        this.$store.dispatch('getProjects')
-      }
-    },
     mode: '',
     name: 'page',
   },

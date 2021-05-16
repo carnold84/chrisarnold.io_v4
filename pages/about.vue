@@ -49,11 +49,6 @@ export default {
   },
   meta: { theme: 'light' },
   transition: {
-    afterEnter(el) {
-      if (this.about === undefined) {
-        this.$store.dispatch('getAbout')
-      }
-    },
     mode: '',
     name: 'page',
   },
@@ -68,8 +63,12 @@ export default {
   flex-direction: column;
   max-width: 960px;
   opacity: 1;
-  padding: 40px 0 0;
+  padding: 0;
   position: relative;
+
+  @include breakpoint('sm') {
+    padding: 80px 0 0;
+  }
 }
 
 .heading {
@@ -77,7 +76,7 @@ export default {
 }
 
 .content {
-  color: var(--light-text-color2);
+  color: var(--light-text-color1);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.7rem;

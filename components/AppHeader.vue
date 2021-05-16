@@ -1,44 +1,46 @@
 <template>
   <div class="app-header">
-    <div class="content-start">
-      <div class="title">
-        <nuxt-link aria-label="Home" to="/">
-          <AppLogo />
-        </nuxt-link>
-        <div v-if="breadcrumb.length > 0" class="breadcrumbs">
-          <div
-            v-for="item in breadcrumb"
-            :key="item.id"
-            class="breadcrumb-text"
-          >
-            {{ item.label }}
+    <div class="header">
+      <div class="content-start">
+        <div class="title">
+          <nuxt-link aria-label="Home" to="/">
+            <AppLogo />
+          </nuxt-link>
+          <div v-if="breadcrumb.length > 0" class="breadcrumbs">
+            <div
+              v-for="item in breadcrumb"
+              :key="item.id"
+              class="breadcrumb-text"
+            >
+              {{ item.label }}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="content-end">
-      <app-nav :items="menuItems" class="main-nav" />
-      <button
-        aria-label="Open Menu"
-        class="menu-btn"
-        @click="isMenuOpen = !isMenuOpen"
-      >
-        <svg
-          class="menu-icon"
-          fill="none"
-          height="26"
-          viewBox="0 0 34 26"
-          xmlns="http://www.w3.org/2000/svg"
-          width="34"
+      <div class="content-end">
+        <!-- <app-nav :items="menuItems" class="main-nav" /> -->
+        <button
+          aria-label="Open Menu"
+          class="menu-btn"
+          @click="isMenuOpen = !isMenuOpen"
         >
-          <rect x="11" width="23" height="2" />
-          <rect x="11" y="24" width="23" height="2" />
-          <rect y="12" width="34" height="2" />
-        </svg>
-      </button>
+          <svg
+            class="menu-icon"
+            fill="none"
+            height="26"
+            viewBox="0 0 34 26"
+            xmlns="http://www.w3.org/2000/svg"
+            width="34"
+          >
+            <rect x="11" width="23" height="2" />
+            <rect x="11" y="24" width="23" height="2" />
+            <rect y="12" width="34" height="2" />
+          </svg>
+        </button>
+      </div>
     </div>
+    <div class="bg"></div>
     <app-nav-drawer
-      class="nav-drawer"
       :is-open="isMenuOpen"
       :items="menuItems"
       :on-close="onCloseMenu"
@@ -47,7 +49,7 @@
 </template>
 
 <script>
-import AppNav from './AppNav.vue'
+// import AppNav from './AppNav.vue'
 import AppNavDrawer from './AppNavDrawer.vue'
 import AppLogo from '~/components/AppLogo.vue'
 
@@ -55,7 +57,7 @@ export default {
   name: 'AppHeader',
   components: {
     AppLogo,
-    AppNav,
+    // AppNav,
     AppNavDrawer,
   },
   props: {
@@ -85,11 +87,11 @@ export default {
           label: 'Code',
           path: '/code',
         },
-        {
+        /* {
           id: 'resources',
           label: 'Resources',
           path: '/resources',
-        },
+        }, */
       ],
     }
   },
@@ -105,6 +107,10 @@ export default {
 @import '@/assets/scss/_breakpoint.scss';
 
 .app-header {
+  position: relative;
+}
+
+.header {
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -113,6 +119,11 @@ export default {
   margin: 0;
   padding: 30px;
   width: 100%;
+  z-index: 2;
+
+  @include breakpoint('xs') {
+    padding: 40px;
+  }
 
   @include breakpoint('lg') {
     padding: 60px 70px;
@@ -232,20 +243,31 @@ export default {
     }
   }
 
-  @include breakpoint('md') {
+  /* @include breakpoint('md') {
     display: none;
-  }
+  } */
 }
 
 .menu-icon {
   fill: inherit;
-  height: 26px;
-  width: 26px;
+  height: 22px;
+  width: 22px;
 }
 
-.nav-drawer {
-  @include breakpoint('md') {
-    display: none;
+.bg {
+  height: 100%;
+  left: 0;
+  position: relative;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+
+  .light-theme & {
+    fill: var(--light-text-color1);
+  }
+
+  .dark-theme & {
+    fill: var(--dark-text-color1);
   }
 }
 </style>

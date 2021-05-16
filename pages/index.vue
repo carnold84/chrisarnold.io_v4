@@ -77,7 +77,7 @@ export default {
   font-size: 1.3rem;
   font-weight: 400;
   line-height: 2.2rem;
-  margin: 0 0 40px;
+  margin: 0 0 80px;
   text-align: justify;
 
   @include breakpoint('sm') {

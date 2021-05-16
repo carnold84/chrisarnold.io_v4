@@ -26,8 +26,8 @@ export default {
   }
 
   @include breakpoint('md') {
-    font-size: 5rem;
-    line-height: 5rem;
+    font-size: 4.5rem;
+    line-height: 4.5rem;
   }
 }
 </style>

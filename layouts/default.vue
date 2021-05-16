@@ -62,11 +62,11 @@ body {
   padding: 0;
   transition: background-color var(--page-transition-duration) ease;
 
-  /* &.no-scroll {
+  &.no-scroll {
     overflow: hidden;
   }
 
-  &::-webkit-scrollbar {
+  /* &::-webkit-scrollbar {
     width: 10px;
   }
 
