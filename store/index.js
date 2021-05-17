@@ -1,8 +1,5 @@
 export const state = () => ({
-  about: undefined,
   currentRoute: '/',
-  home: undefined,
-  projects: undefined,
   resources: undefined,
   theme: {
     current: 'light',
@@ -43,23 +40,6 @@ export const getters = {
 }
 
 export const actions = {
-  async getAbout(context) {
-    const response = await this.$axios.$get(`${process.env.apiUrl}/items/about`)
-
-    context.commit('addAbout', response.data[0])
-  },
-  async getHome(context) {
-    const response = await this.$axios.$get(`${process.env.apiUrl}/items/home`)
-
-    context.commit('addHome', response.data[0])
-  },
-  async getProjects(context) {
-    const response = await this.$axios.$get(
-      `${process.env.apiUrl}/items/projects`
-    )
-
-    context.commit('addProjects', response.data)
-  },
   async getResources(context) {
     const response = await this.$axios.$get(
       `${process.env.apiUrl}/items/resources`
@@ -97,15 +77,6 @@ export const actions = {
 }
 
 export const mutations = {
-  addAbout(state, about) {
-    state.about = about
-  },
-  addHome(state, home) {
-    state.home = home
-  },
-  addProjects(state, projects) {
-    state.projects = projects
-  },
   addResources(state, resources) {
     state.resources = resources
   },

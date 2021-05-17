@@ -5,7 +5,11 @@
       @before-enter="beforeEnter"
       @after-leave="afterLeave"
     > -->
-    <transition name="fade">
+    <transition
+      name="slide"
+      @before-enter="beforeEnter"
+      @after-leave="afterLeave"
+    >
       <div v-if="isOpen" class="app-drawer">
         <header class="header">
           <button class="close-btn" @click="onClose">
@@ -46,14 +50,14 @@ export default {
       type: Function,
     },
   },
-  /* methods: {
+  methods: {
     beforeEnter() {
       document.querySelector('body').classList.add('no-scroll')
     },
     afterLeave() {
       document.querySelector('body').classList.remove('no-scroll')
     },
-  }, */
+  },
 }
 </script>
 
@@ -63,24 +67,29 @@ export default {
 .app-drawer {
   --duration: 500ms;
 
-  background-color: rgba(255, 255, 255, 0.8);
+  //background-color: rgba(255, 255, 255, 0.8);
+  background-color: #ffffff;
   display: flex;
-  backdrop-filter: saturate(180%) blur(10px);
+  //backdrop-filter: saturate(180%) blur(10px);
   flex-direction: column;
   height: 100%;
   left: 0;
-  padding: 40px 50px;
+  padding: 30px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
+
+  @include breakpoint('xs') {
+    padding: 40px;
+  }
 
   @include breakpoint('lg') {
     padding: 60px 70px;
   }
 }
 
-.fade-enter-active,
+/* .fade-enter-active,
 .fade-leave-active {
   transition: backdrop-filter var(--duration) ease, opacity var(--duration) ease;
 }
@@ -88,6 +97,17 @@ export default {
 .fade-leave-to {
   opacity: 0;
   transition: backdrop-filter var(--duration) ease, opacity var(--duration) ease;
+} */
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform var(--duration) cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translate3d(0, -100%, 0);
+  transition: transform var(--duration) cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
 .header {

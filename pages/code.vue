@@ -1,16 +1,20 @@
 <template>
   <app-page
     :breadcrumb="breadcrumb"
-    :is-loading="projects === undefined"
+    :is-loading="data === undefined"
     theme="dark"
   >
     <div class="wrapper">
       <div class="content">
         <code-item
-          v-for="(project, index) in projects"
+          v-for="(project, index) in data"
           :key="project._id"
-          :item="project"
+          :demo-url="project.demoLink"
+          :description="project"
           :number="index + 1"
+          :repo-url="project.repositoryLink"
+          :tags="project.tags"
+          :title="project.title"
         />
       </div>
     </div>
@@ -26,34 +30,23 @@ export default {
     CodeItem,
     AppPage,
   },
-  data() {
+  async asyncData({ $content }) {
+    const data = await $content('code').fetch()
+
+    data.sort((a, b) => {
+      return a.order - b.order
+    })
+
     return {
-      breadcrumb: [
-        {
-          id: 'code-1',
-          label: 'Code',
-        },
-        {
-          id: 'code-2',
-          label: 'Projects & Experiments',
-        },
-      ],
+      data,
     }
   },
-  computed: {
-    projects() {
-      return this.$store.state.projects
-    },
+  data() {
+    return {
+      breadcrumb: [],
+    }
   },
   meta: { theme: 'dark' },
-  methods: {
-    isSelected(id) {
-      return this.selectedProject === id
-    },
-    onCodeClick(id) {
-      this.selectedProject = id
-    },
-  },
   head() {
     return {
       meta: [
@@ -68,11 +61,6 @@ export default {
     }
   },
   transition: {
-    afterEnter(el) {
-      if (this.projects === undefined) {
-        this.$store.dispatch('getProjects')
-      }
-    },
     mode: '',
     name: 'page',
   },
@@ -99,7 +87,7 @@ export default {
     width: calc(100% - 40px);
   }
 
-  @include breakpoint('md') {
+  @include breakpoint('sm') {
     & > * {
       width: calc(50% - 40px);
     }

@@ -74,9 +74,9 @@ export default {
     color: var(--light-text-color2);
     cursor: pointer;
     font-family: var(--font-primary);
-    font-size: 2.9rem;
+    font-size: 3rem;
     font-weight: 300;
-    margin: 0 0 20px;
+    margin: 0 0 40px;
     padding: 0;
     text-transform: uppercase;
 
@@ -95,6 +95,17 @@ export default {
     &:focus {
       outline: none;
     }
+  }
+
+  .slide-enter-active &,
+  .slide-leave-active & {
+    transition: transform 1000ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .slide-enter &,
+  .slide-leave-to & {
+    transform: translate3d(0, -40%, 0);
+    transition: transform 1000ms cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 }
 </style>

@@ -1,48 +1,39 @@
 <template>
   <app-page
     :breadcrumb="breadcrumb"
-    :is-loading="about === undefined"
+    :is-loading="data === undefined"
     theme="light"
   >
-    <div v-if="about !== undefined" class="wrapper">
-      <h1 class="heading">{{ about.title }}</h1>
+    <div v-if="data !== undefined" class="about">
+      <page-title class="heading">{{ data.title }}</page-title>
       <div class="content">
-        <vue-markdown :source="about.content"></vue-markdown>
+        <nuxt-content :document="data" />
       </div>
     </div>
   </app-page>
 </template>
 
 <script>
-import VueMarkdown from 'vue-markdown'
-
 import AppPage from '~/components/AppPage.vue'
+import PageTitle from '~/components/PageTitle.vue'
 
 export default {
   components: {
     AppPage,
-    VueMarkdown,
+    PageTitle,
+  },
+  async asyncData({ $content }) {
+    const data = await $content('about').fetch()
+
+    return {
+      data,
+    }
   },
   data() {
     return {
-      breadcrumb: [
-        {
-          id: 'about-1',
-          label: 'About',
-        },
-        {
-          id: 'about-2',
-          label: 'History & Experience',
-        },
-      ],
+      breadcrumb: [],
       theme: 'light',
     }
-  },
-  computed: {
-    about() {
-      console.log(this.$store.state.about)
-      return this.$store.state.about
-    },
   },
   head() {
     return {
@@ -58,11 +49,6 @@ export default {
   },
   meta: { theme: 'light' },
   transition: {
-    afterEnter(el) {
-      if (this.about === undefined) {
-        this.$store.dispatch('getAbout')
-      }
-    },
     mode: '',
     name: 'page',
   },
@@ -72,25 +58,25 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/scss/_breakpoint.scss';
 
-.wrapper {
+.about {
   display: flex;
   flex-direction: column;
   max-width: 960px;
   opacity: 1;
-  padding: 40px 0 0;
+  padding: 0;
   position: relative;
+
+  @include breakpoint('sm') {
+    padding: 80px 0 0;
+  }
 }
 
 .heading {
   color: var(--light-text-color1);
-  font-size: 6rem;
-  font-weight: 400;
-  line-height: 6rem;
-  margin: 0 0 25px;
 }
 
 .content {
-  color: var(--light-text-color2);
+  color: var(--light-text-color1);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.7rem;
@@ -98,13 +84,14 @@ export default {
   text-align: justify;
 
   @include breakpoint('sm') {
-    font-size: 1rem;
-    line-height: 1.7rem;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
   }
 
   @include breakpoint('md') {
-    font-size: 1rem;
-    line-height: 1.7rem;
+    font-size: 1.4rem;
+    line-height: 2.1rem;
+    margin: 0 0 2.1rem;
   }
 }
 </style>

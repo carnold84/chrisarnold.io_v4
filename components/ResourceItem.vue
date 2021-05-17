@@ -1,11 +1,11 @@
 <template>
   <div class="resource-item">
     <h3 class="resource-item-cell title">
-      <a :href="item.link" rel="noopener" target="_blank">{{ item.name }} </a>
+      <a :href="link" rel="noopener" target="_blank">{{ name }} </a>
     </h3>
     <div class="resource-item-tags">
       <button
-        v-for="tag in item.tags"
+        v-for="tag in tags"
         :key="tag"
         class="resource-item-tag"
         @click="onSelect(tag)"
@@ -20,9 +20,19 @@
 export default {
   name: 'ResourceItem',
   props: {
-    item: {
+    link: {
       required: true,
-      type: Object,
+      type: String,
+    },
+    name: {
+      required: true,
+      type: String,
+    },
+    tags: {
+      default: () => {
+        return []
+      },
+      type: Array,
     },
   },
   methods: {

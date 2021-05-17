@@ -35,8 +35,8 @@ export default {
   --light-text-color2: rgba(0, 0, 0, 0.5);
   --light-text-color3: rgba(0, 0, 0, 0.3);
   --dark-text-color1: rgba(255, 255, 255, 1);
-  --dark-text-color2: rgba(255, 255, 255, 0.65);
-  --dark-text-color3: rgba(255, 255, 255, 0.3);
+  --dark-text-color2: rgba(255, 255, 255, 0.7);
+  --dark-text-color3: rgba(255, 255, 255, 0.5);
 
   --page-transition-duration: 1000ms;
 }
@@ -62,11 +62,11 @@ body {
   padding: 0;
   transition: background-color var(--page-transition-duration) ease;
 
-  /* &.no-scroll {
+  &.no-scroll {
     overflow: hidden;
   }
 
-  &::-webkit-scrollbar {
+  /* &::-webkit-scrollbar {
     width: 10px;
   }
 
