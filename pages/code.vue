@@ -87,7 +87,7 @@ export default {
     width: calc(100% - 40px);
   }
 
-  @include breakpoint('md') {
+  @include breakpoint('sm') {
     & > * {
       width: calc(50% - 40px);
     }
