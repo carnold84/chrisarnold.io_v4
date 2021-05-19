@@ -67,7 +67,7 @@ export default {
   position: relative;
 
   @include breakpoint('sm') {
-    padding: 80px 0 0;
+    padding: 40px 0 0;
   }
 }
 
@@ -79,18 +79,19 @@ export default {
   color: var(--light-text-color1);
   font-size: 1rem;
   font-weight: 400;
-  line-height: 1.7rem;
-  margin: 0 0 1.7rem;
+  line-height: 1.6rem;
+  margin: 0 0 1.8rem;
   text-align: justify;
 
   @include breakpoint('sm') {
-    font-size: 1.2rem;
-    line-height: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.7rem;
+    margin: 0 0 1.9rem;
   }
 
   @include breakpoint('md') {
-    font-size: 1.4rem;
-    line-height: 2.1rem;
+    font-size: 1.2rem;
+    line-height: 1.9rem;
     margin: 0 0 2.1rem;
   }
 }

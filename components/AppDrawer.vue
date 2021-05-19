@@ -136,8 +136,8 @@ export default {
 
 .close-icon {
   fill: inherit;
-  height: 26px;
-  width: 26px;
+  height: 22px;
+  width: 22px;
 }
 
 .content {
