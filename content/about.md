@@ -4,7 +4,7 @@ meta.title: About - ChrisArnold.io
 description: Chris Arnold - About me, work history and qualifications.
 ---
 
-I started out getting a bachelor’s degree in graphic design in Christchurch, NZ, but I had always been fascinated by technology, computers and, particularly, the internet.
+I started out getting a bachelor’s degree in graphic design in Christchurch, NZ, but I have always been fascinated by technology, computers and, particularly, the internet.
 
 After completing my degree in 2006, I got a job in Christchurch developing interactive medical animations in Adobe Flash. From there I taught myself Actionscript 3.0 and moved on to developing more complex applications including early augmented reality in the browser. I also taught myself HTML, CSS and JQuery.
 
