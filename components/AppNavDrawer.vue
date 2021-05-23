@@ -1,26 +1,55 @@
 <template>
   <app-drawer :is-open="isOpen" :on-close="onClose">
-    <ul class="nav-list">
-      <li v-for="item in items" :key="item.id" class="nav-item">
+    <div class="wrapper">
+      <div class="header">
         <button
           class="link"
-          :class="{ 'is-active': currentRoute === item.path }"
-          :title="item.label"
-          @click="(evt) => onSelect(evt, item.path)"
+          :title="items[0].label"
+          @click="(evt) => onSelect(evt, items[0].path)"
         >
-          {{ item.label }}
+          <app-logo />
         </button>
-      </li>
-    </ul>
+      </div>
+      <div class="content">
+        <ul class="nav-list">
+          <li v-for="item in items" :key="item.id" class="nav-item">
+            <button
+              class="link"
+              :class="{ 'is-active': currentRoute === item.path }"
+              :title="item.label"
+              @click="(evt) => onSelect(evt, item.path)"
+            >
+              {{ item.label }}
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="footer">
+        <div class="contact">
+          <h3 class="label">Contact me.</h3>
+          <a class="link email" :href="mailTo">{{ email }} </a>
+        </div>
+        <a
+          class="link"
+          href="https://github.com/carnold84"
+          rel="noopener"
+          target="blank"
+        >
+          <github-logo />
+        </a>
+      </div>
+    </div>
   </app-drawer>
 </template>
 
 <script>
 import AppDrawer from './AppDrawer.vue'
+import AppLogo from './AppLogo.vue'
+import GithubLogo from './GithubLogo.vue'
 
 export default {
   name: 'AppNavDrawer',
-  components: { AppDrawer },
+  components: { AppDrawer, AppLogo, GithubLogo },
   props: {
     isOpen: {
       default: false,
@@ -39,6 +68,12 @@ export default {
     currentRoute() {
       return this.$store.state.currentRoute
     },
+    email() {
+      return process.env.NUXT_ENV_EMAIL
+    },
+    mailTo() {
+      return `mailto: ${process.env.NUXT_ENV_EMAIL}`
+    },
   },
   methods: {
     onSelect(evt, route) {
@@ -52,6 +87,74 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/scss/_breakpoint.scss';
 
+.wrapper {
+  align-items: center;
+  display: flex;
+  fill: var(--light-text-color1);
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  justify-content: space-between;
+  margin: 0;
+  width: 100%;
+}
+
+.content {
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  justify-content: space-between;
+  margin: 0;
+  width: 100%;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+
+  .label {
+    font-weight: 300;
+    font-size: 1.3rem;
+    margin: 0 0 5px;
+  }
+}
+
+.link {
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: var(--light-text-color2);
+  cursor: pointer;
+  display: flex;
+  fill: var(--light-text-color2);
+  text-decoration: none;
+
+  span {
+    margin: 0 0 1px 8px;
+  }
+
+  &:hover {
+    color: var(--light-text-color1);
+    fill: var(--light-text-color1);
+  }
+}
+
 .nav-list {
   align-items: center;
   display: flex;
@@ -64,6 +167,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0 60px 27px;
   }
 }
 
@@ -79,6 +183,12 @@ export default {
     margin: 0 0 40px;
     padding: 0;
     text-transform: uppercase;
+
+    svg {
+      fill: inherit;
+      height: 28px;
+      width: 28px;
+    }
 
     @include breakpoint('md') {
       margin: 0;

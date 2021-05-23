@@ -77,17 +77,11 @@ export default {
 
 .content {
   color: var(--light-text-color1);
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 400;
-  line-height: 1.6rem;
+  line-height: 1.8rem;
   margin: 0 0 1.8rem;
   text-align: justify;
-
-  @include breakpoint('sm') {
-    font-size: 1.1rem;
-    line-height: 1.7rem;
-    margin: 0 0 1.9rem;
-  }
 
   @include breakpoint('md') {
     font-size: 1.2rem;
