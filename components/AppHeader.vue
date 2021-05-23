@@ -4,7 +4,7 @@
       <div class="content-start">
         <div class="title">
           <nuxt-link aria-label="Home" to="/">
-            <AppLogo />
+            <app-logo />
           </nuxt-link>
           <div v-if="breadcrumb.length > 0" class="breadcrumbs">
             <div

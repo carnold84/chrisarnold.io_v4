@@ -114,7 +114,20 @@ export default {
   display: flex;
   height: 27px;
   justify-content: flex-end;
-  width: 100%;
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  z-index: 10;
+
+  @include breakpoint('xs') {
+    right: 40px;
+    top: 40px;
+  }
+
+  @include breakpoint('lg') {
+    right: 70px;
+    top: 60px;
+  }
 }
 
 .close-btn {
@@ -145,9 +158,5 @@ export default {
   display: flex;
   flex-grow: 1;
   padding: 0;
-
-  @include breakpoint('md') {
-    padding: 0 60px;
-  }
 }
 </style>
