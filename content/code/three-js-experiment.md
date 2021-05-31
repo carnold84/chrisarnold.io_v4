@@ -1,6 +1,6 @@
 ---
 demoLink: 'https://carnold84.github.io/three_js_lab/'
-order: 5
+order: 8
 path: '/code/three-js-experiment'
 repositoryLink: 'https://github.com/carnold84/three_js_lab'
 tags: 'Three.js, Modernizr, Require.js, jQuery'
