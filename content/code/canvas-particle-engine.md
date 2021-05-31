@@ -1,9 +1,9 @@
 ---
 demoLink: 'https://carnold84.github.io/canvas_particles/'
-order: 7
+order: 10
 path: '/code/canvas-particle-engine'
 repositoryLink: 'https://github.com/carnold84/canvas_particles'
-tags: 'modernizr.js, require.js, jquery.js'
+tags: 'Modernizr.js, Require.js, jQuery.js'
 title: 'Canvas Particle Engine'
 type: 'code'
 ---

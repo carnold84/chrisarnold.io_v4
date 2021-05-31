@@ -1,6 +1,6 @@
 ---
 demoLink: 'https://carnold84.github.io/travel_app/'
-order: 4
+order: 9
 path: '/code/travel-app'
 repositoryLink: 'https://github.com/carnold84/travel_app'
 tags: 'AngularJS, Spectre.css'
