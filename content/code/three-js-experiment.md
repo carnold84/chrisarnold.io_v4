@@ -1,11 +1,11 @@
 ---
-demoLink: 'https://carnold84.github.io/three_js_lab/'
-order: 8
+demoLink: 'https://carnold84.github.io/three-js-experiment/'
+order: 2
 path: '/code/three-js-experiment'
-repositoryLink: 'https://github.com/carnold84/three_js_lab'
-tags: 'Three.js, Modernizr, Require.js, jQuery'
+repositoryLink: 'https://github.com/carnold84/three-js-experiment'
+tags: 'Three.js, Vue, D3'
 title: 'Three.js Experiment'
 type: 'code'
 ---
 
-Experiment building an interactive app using WebGL library three.js. Click to add in a new element.
+Interactive link diagram built with [three.js](https://threejs.org), [D3](https://d3js.org) and [Vue 3](https://v3.vuejs.org).

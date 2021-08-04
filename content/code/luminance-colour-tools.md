@@ -1,6 +1,6 @@
 ---
 demoLink: 'https://carnold84.github.io/luminance/'
-order: 3
+order: 4
 path: '/code/luminance-colour-tools'
 repositoryLink: 'https://github.com/carnold84/luminance'
 tags: 'Javascript Modules, HTML, CSS, chart.js, pickr.js, chroma.js'

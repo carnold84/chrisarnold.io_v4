@@ -8,4 +8,4 @@ title: 'Simple Todos'
 type: 'code'
 ---
 
-Simple offline React app for tracking and sorting simple tasks. Uses Redux and Immutable.js for state management and Styled Components for styles.
+Offline [React](https://reactjs.org) app for tracking and sorting tasks. Uses [Redux](https://redux.js.org) and [Immutable.js](https://immutable-js.com) for state management and [Styled Components](https://styled-components.com) for styles.
