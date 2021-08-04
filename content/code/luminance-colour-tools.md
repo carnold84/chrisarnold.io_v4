@@ -8,4 +8,4 @@ title: 'Luminance Colour Tools'
 type: 'code'
 ---
 
-GUI for useful colour tools. Built in pure javascript using [Chart.js](https://www.chartjs.org/), [Pickr](https://simonwep.github.io/pickr/), and [Chroma](https://vis4.net/chromajs/).
+Useful tools for choosing colours. Built in pure javascript using [Chart.js](https://www.chartjs.org/), [Pickr](https://simonwep.github.io/pickr/), and [Chroma](https://vis4.net/chromajs/).

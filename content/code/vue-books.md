@@ -8,4 +8,4 @@ title: 'Vue Books'
 type: 'code'
 ---
 
-App to catalog books. Built to be used in an Electron desktop app and as a [Vue](https://vuejs.org) web app. Uses local storage by default, but the api file is loaded in dynamically so it can easily be swapped out.
+App to catalog books. Built with [Vue](https://vuejs.org) to be used in an Electron desktop app and as a web app. Uses local storage by default, but the api file is loaded in dynamically so it can easily be swapped out.
