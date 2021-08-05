@@ -1,6 +1,6 @@
 ---
 demoLink: 'https://carnold84.github.io/task-manager/'
-order: 6
+order: 8
 path: '/code/task-manager'
 repositoryLink: 'https://github.com/carnold84/task-manager'
 tags: 'Vue, Vue Router, Vuex, Localforage'
