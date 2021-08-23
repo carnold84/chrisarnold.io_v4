@@ -5,6 +5,7 @@
     theme="dark"
   >
     <div class="wrapper">
+      <page-title class="heading">Code.</page-title>
       <div class="content">
         <code-item
           v-for="(project, index) in data"
@@ -75,6 +76,10 @@ export default {
   flex-direction: column;
   opacity: 1;
   position: relative;
+
+  @include breakpoint('sm') {
+    padding: 40px 0 0;
+  }
 }
 
 .content {

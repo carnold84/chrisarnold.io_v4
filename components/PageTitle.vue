@@ -16,18 +16,18 @@ export default {
 .page-title {
   color: inherit;
   font-size: 3rem;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 3rem;
-  margin: 0;
+  margin: 0 0 30px;
 
   @include breakpoint('sm') {
-    font-size: 4rem;
-    line-height: 4rem;
+    font-size: 3.8rem;
+    line-height: 3.8rem;
   }
 
   @include breakpoint('md') {
-    font-size: 4.5rem;
-    line-height: 4.5rem;
+    font-size: 3.8rem;
+    line-height: 3.8rem;
   }
 }
 </style>

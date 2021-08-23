@@ -5,7 +5,9 @@
     theme="light"
   >
     <div v-if="data !== undefined" class="about">
-      <page-title class="heading">{{ data.title }}</page-title>
+      <page-title class="heading" style="margin: 0 0 25px">{{
+        data.title
+      }}</page-title>
       <div class="content">
         <nuxt-content :document="data" />
       </div>
@@ -78,14 +80,18 @@ export default {
 .content {
   color: var(--light-text-color1);
   font-size: 1.1rem;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 1.8rem;
   margin: 0 0 1.8rem;
   text-align: justify;
 
+  &::v-deep p:first-child {
+    margin: 0;
+  }
+
   @include breakpoint('md') {
-    font-size: 1.2rem;
-    line-height: 1.9rem;
+    font-size: 1.3rem;
+    line-height: 2.2rem;
     margin: 0 0 2.1rem;
   }
 }

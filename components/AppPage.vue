@@ -62,11 +62,13 @@ export default {
 
   &.light-theme {
     background-color: var(--light-color1);
+    color: var(--light-text-color1);
     fill: var(--light-text-color1);
   }
 
   &.dark-theme {
     background-color: var(--dark-color1);
+    color: var(--dark-text-color1);
     fill: var(--dark-text-color1);
   }
 }

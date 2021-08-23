@@ -139,10 +139,10 @@ export default {
   align-items: center;
   background-color: transparent;
   border: none;
-  color: var(--light-text-color2);
+  color: var(--light-text-color1);
   cursor: pointer;
   display: flex;
-  fill: var(--light-text-color2);
+  fill: var(--light-text-color1);
   text-decoration: none;
 
   span {
@@ -150,8 +150,8 @@ export default {
   }
 
   &:hover {
-    color: var(--light-text-color1);
-    fill: var(--light-text-color1);
+    color: var(--light-text-color2);
+    fill: var(--light-text-color2);
   }
 }
 

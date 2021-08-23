@@ -22,8 +22,7 @@ export default {
       { rel: 'preconnect', href: process.env.API_URL },
       {
         as: 'style',
-        href:
-          'https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap',
+        href: 'https://fonts.googleapis.com/css2?family=Inter:wght@200;300&display=swap',
         once: true,
         onload: 'this.onload=null;this.rel="stylesheet"',
         rel: 'preload',

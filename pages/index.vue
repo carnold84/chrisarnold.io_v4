@@ -75,7 +75,7 @@ export default {
 .section {
   color: var(--dark-text-color2);
   font-size: 1.3rem;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 2.2rem;
   margin: 0 0 80px;
   text-align: justify;
