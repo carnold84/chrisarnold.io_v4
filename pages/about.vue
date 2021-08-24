@@ -79,20 +79,26 @@ export default {
 
 .content {
   color: var(--light-text-color1);
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 300;
-  line-height: 1.8rem;
-  margin: 0 0 1.8rem;
+  line-height: 2.5rem;
+  margin: 0 0 2.5rem;
   text-align: justify;
 
   &::v-deep p:first-child {
     margin: 0;
   }
 
+  @include breakpoint('sm') {
+    font-size: 1.7rem;
+    line-height: 2.7rem;
+    margin: 0 0 2.7rem;
+  }
+
   @include breakpoint('md') {
-    font-size: 1.3rem;
-    line-height: 2.2rem;
-    margin: 0 0 2.1rem;
+    font-size: 2rem;
+    line-height: 3rem;
+    margin: 0 0 3rem;
   }
 }
 </style>

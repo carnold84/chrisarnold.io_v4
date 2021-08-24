@@ -38,7 +38,7 @@ export default {
     color: var(--light-text-color2);
     cursor: pointer;
     font-family: var(--font-primary);
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-weight: 300;
     margin: 0 25px 0 0;
     padding: 0;

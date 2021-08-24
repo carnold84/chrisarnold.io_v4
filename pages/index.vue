@@ -74,20 +74,20 @@ export default {
 
 .section {
   color: var(--dark-text-color2);
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 300;
-  line-height: 2.2rem;
+  line-height: 2.5rem;
   margin: 0 0 80px;
   text-align: justify;
 
   @include breakpoint('sm') {
-    font-size: 1.3rem;
-    line-height: 2rem;
+    font-size: 1.7rem;
+    line-height: 2.7rem;
   }
 
   @include breakpoint('md') {
-    font-size: 1.3rem;
-    line-height: 2.2rem;
+    font-size: 2rem;
+    line-height: 3rem;
   }
 }
 </style>

@@ -81,10 +81,10 @@ export default {
 
   a {
     color: var(--light-text-color2);
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     font-weight: 400;
     font-family: var(--title-font);
-    line-height: 2.4rem;
+    line-height: 3.5rem;
     margin: 0;
     padding: 20px 25px 10px;
     text-decoration: none;
@@ -118,10 +118,10 @@ export default {
   border: none;
   color: var(--light-text-color2);
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 400;
   font-family: var(--title-font);
-  line-height: 2rem;
+  line-height: 2.5rem;
   margin: 0 10px 0 0;
   text-decoration: none;
 
@@ -130,7 +130,7 @@ export default {
   }
 
   @include breakpoint('md') {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
   }
 
   &:hover {

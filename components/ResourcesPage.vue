@@ -136,7 +136,7 @@ export default {
   color: var(--light-text-color2);
   display: flex;
   font-family: var(--font-primary);
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 300;
   height: 300px;
   justify-content: center;

@@ -15,19 +15,19 @@ export default {
 
 .page-title {
   color: inherit;
-  font-size: 3rem;
+  font-size: 4.2rem;
   font-weight: 300;
-  line-height: 3rem;
+  line-height: 4.2rem;
   margin: 0 0 30px;
 
   @include breakpoint('sm') {
-    font-size: 3.8rem;
-    line-height: 3.8rem;
+    font-size: 5rem;
+    line-height: 5rem;
   }
 
   @include breakpoint('md') {
-    font-size: 3.8rem;
-    line-height: 3.8rem;
+    font-size: 5.4rem;
+    line-height: 5.4rem;
   }
 }
 </style>

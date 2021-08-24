@@ -115,10 +115,10 @@ export default {
   display: none;
   flex-shrink: 0;
   font-family: var(--title-font);
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 300;
   grid-area: number;
-  line-height: 2.6rem;
+  line-height: 3.8rem;
   margin: 0 0 10px;
   width: 100%;
 
@@ -131,20 +131,20 @@ export default {
   color: var(--dark-text-color1);
   flex-shrink: 0;
   font-family: var(--title-font);
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 300;
   grid-area: header;
-  line-height: 2.6rem;
+  line-height: 3.8rem;
   margin: 0 0 10px;
   width: 100%;
 }
 
 .code-item-content {
   color: var(--dark-text-color2);
-  font-size: 1rem;
+  font-size: 1.6rem;
   font-weight: 300;
   grid-area: content;
-  line-height: 1.8rem;
+  line-height: 2.6rem;
   margin: 0 0 20px;
 
   ::v-deep a,
@@ -156,10 +156,10 @@ export default {
 
 .code-item-meta {
   color: var(--dark-text-color2);
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 300;
   grid-area: meta;
-  line-height: 1.5rem;
+  line-height: 2.4rem;
 
   span {
     color: var(--dark-text-color3);
@@ -188,10 +188,10 @@ export default {
   color: var(--dark-text-color2);
   display: flex;
   fill: var(--dark-text-color2);
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 300;
   justify-content: center;
-  line-height: 1.4rem;
+  line-height: 2rem;
   text-decoration: none;
 
   svg {

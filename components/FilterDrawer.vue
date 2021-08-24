@@ -121,7 +121,7 @@ export default {
   display: flex;
   fill: var(--light-text-color1);
   font-family: var(--font-primary);
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 300;
   height: 40px;
   margin: var(--gutter);

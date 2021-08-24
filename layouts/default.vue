@@ -51,7 +51,7 @@ html {
   -webkit-font-smoothing: antialiased;
   color: var(--light-text-color1);
   font-family: var(--font-primary);
-  font-size: 14px;
+  font-size: 10px;
   line-break: 22px;
   margin: 0;
   padding: 0;

@@ -158,7 +158,7 @@ export default {
 
 .breadcrumb-text {
   font-family: var(--title-font), Arial, Helvetica, sans-serif;
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: 0.03rem;
   margin: 0 10px 0 0;

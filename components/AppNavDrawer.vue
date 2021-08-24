@@ -130,7 +130,7 @@ export default {
 
   .label {
     font-weight: 300;
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     margin: 0 0 5px;
   }
 }
@@ -178,7 +178,7 @@ export default {
     color: var(--light-text-color2);
     cursor: pointer;
     font-family: var(--font-primary);
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: 300;
     margin: 0 0 40px;
     padding: 0;

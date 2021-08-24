@@ -49,7 +49,7 @@ export default {
 }
 
 .text {
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   margin: 10px 0 0;
 
   .light-theme & {
