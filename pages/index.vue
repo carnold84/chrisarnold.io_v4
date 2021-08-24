@@ -70,6 +70,19 @@ export default {
 
 .heading {
   color: var(--dark-text-color1);
+  font-size: 5.2rem;
+  line-height: 5.2rem;
+  margin: 0 0 20px;
+
+  @include breakpoint('sm') {
+    font-size: 6.2rem;
+    line-height: 6.2rem;
+  }
+
+  @include breakpoint('md') {
+    font-size: 7.2rem;
+    line-height: 7.2rem;
+  }
 }
 
 .section {
@@ -79,6 +92,10 @@ export default {
   line-height: 2.5rem;
   margin: 0 0 80px;
   text-align: justify;
+
+  &::v-deep p:first-child {
+    margin: 0;
+  }
 
   @include breakpoint('sm') {
     font-size: 1.7rem;
