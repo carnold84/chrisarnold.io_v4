@@ -48,6 +48,7 @@ export default {
 }
 
 html {
+  -webkit-font-smoothing: antialiased;
   color: var(--light-text-color1);
   font-family: var(--font-primary);
   font-size: 14px;
@@ -80,7 +81,7 @@ body {
   } */
 
   &.light-theme {
-    background-color: var(--light-color1);
+    background-color: var(--light-color3);
 
     /* &::-webkit-scrollbar-track {
       background-color: var(--light-color1);

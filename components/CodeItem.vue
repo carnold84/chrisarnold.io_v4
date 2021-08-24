@@ -116,7 +116,7 @@ export default {
   flex-shrink: 0;
   font-family: var(--title-font);
   font-size: 2rem;
-  font-weight: 200;
+  font-weight: 300;
   grid-area: number;
   line-height: 2.6rem;
   margin: 0 0 10px;
@@ -132,7 +132,7 @@ export default {
   flex-shrink: 0;
   font-family: var(--title-font);
   font-size: 2rem;
-  font-weight: 200;
+  font-weight: 300;
   grid-area: header;
   line-height: 2.6rem;
   margin: 0 0 10px;
@@ -142,7 +142,7 @@ export default {
 .code-item-content {
   color: var(--dark-text-color2);
   font-size: 1rem;
-  font-weight: 200;
+  font-weight: 300;
   grid-area: content;
   line-height: 1.8rem;
   margin: 0 0 20px;
@@ -157,7 +157,7 @@ export default {
 .code-item-meta {
   color: var(--dark-text-color2);
   font-size: 1.1rem;
-  font-weight: 200;
+  font-weight: 300;
   grid-area: meta;
   line-height: 1.5rem;
 
@@ -189,7 +189,7 @@ export default {
   display: flex;
   fill: var(--dark-text-color2);
   font-size: 1rem;
-  font-weight: 200;
+  font-weight: 300;
   justify-content: center;
   line-height: 1.4rem;
   text-decoration: none;

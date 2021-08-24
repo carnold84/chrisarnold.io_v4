@@ -25,16 +25,16 @@
           @click="isMenuOpen = !isMenuOpen"
         >
           <svg
-            class="menu-icon"
-            fill="none"
-            height="26"
-            viewBox="0 0 34 26"
+            width="23"
+            height="18"
+            viewBox="0 0 23 18"
             xmlns="http://www.w3.org/2000/svg"
-            width="34"
           >
-            <rect x="11" width="23" height="2" />
-            <rect x="11" y="24" width="23" height="2" />
-            <rect y="12" width="34" height="2" />
+            <path
+              d="M3.91843 1.875C3.91843 1.32272 4.36614 0.875 4.91843 0.875H21.7754C22.3277 0.875 22.7754 1.32272 22.7754 1.875V2.375C22.7754 2.92728 22.3277 3.375 21.7754 3.375H4.91843C4.36614 3.375 3.91843 2.92728 3.91843 2.375V1.875Z"
+            />
+            <rect x="8.63297" y="14.625" width="14.1428" height="2.5" rx="1" />
+            <rect x="0.775696" y="7.75" width="21.9999" height="2.5" rx="1" />
           </svg>
         </button>
       </div>
@@ -218,10 +218,10 @@ export default {
   padding: 0;
 
   .light-theme & {
-    fill: var(--light-text-color2);
+    fill: var(--light-text-color1);
 
     &:hover {
-      fill: var(--light-text-color1);
+      fill: var(--light-text-color2);
     }
 
     &:focus {
@@ -231,10 +231,10 @@ export default {
   }
 
   .dark-theme & {
-    fill: var(--dark-text-color2);
+    fill: var(--dark-text-color1);
 
     &:hover {
-      fill: var(--dark-text-color1);
+      fill: var(--dark-text-color2);
     }
 
     &:focus {

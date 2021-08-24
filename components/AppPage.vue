@@ -61,7 +61,7 @@ export default {
   width: 100%;
 
   &.light-theme {
-    background-color: var(--light-color1);
+    background-color: var(--light-color3);
     color: var(--light-text-color1);
     fill: var(--light-text-color1);
   }
@@ -79,7 +79,7 @@ export default {
   z-index: 1;
 
   .light-theme & {
-    background-color: var(--light-color1);
+    background-color: var(--light-color3);
   }
 
   .dark-theme & {

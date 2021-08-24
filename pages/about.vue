@@ -80,7 +80,7 @@ export default {
 .content {
   color: var(--light-text-color1);
   font-size: 1.1rem;
-  font-weight: 200;
+  font-weight: 300;
   line-height: 1.8rem;
   margin: 0 0 1.8rem;
   text-align: justify;

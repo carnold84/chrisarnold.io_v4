@@ -16,7 +16,7 @@ export default {
 .page-title {
   color: inherit;
   font-size: 3rem;
-  font-weight: 200;
+  font-weight: 300;
   line-height: 3rem;
   margin: 0 0 30px;
 
