@@ -25,16 +25,18 @@
         </tag-link>
       </div>
       <div class="notes-content">
-        <template v-for="(note, index) in data">
-          <list-item
-            v-if="getIsActive(note)"
-            :key="note.slug"
-            :number="index + 1"
-            :sub-title="formatDate(note.publishedAt)"
-            :tags="getNoteTags(note)"
-            :title="note.title"
-          />
-        </template>
+        <transition-group mode="in-out" name="fade">
+          <template v-for="(note, index) in data">
+            <list-item
+              v-if="getIsActive(note)"
+              :key="note.slug"
+              :number="index + 1"
+              :sub-title="formatDate(note.publishedAt)"
+              :tags="getNoteTags(note)"
+              :title="note.title"
+            />
+          </template>
+        </transition-group>
       </div>
     </div>
   </app-page>
@@ -97,7 +99,7 @@ export default {
         return {
           id: tag,
           label: tag,
-          onClick: () => this.onTagClick(tag),
+          onClick: () => this.onItemTagClick(tag),
           to: { query: { tags: this.getTagsString(tag) } },
         }
       })
@@ -146,6 +148,10 @@ export default {
 
       this.activeTags = activeTags
     },
+    onItemTagClick(tag) {
+      this.$router.push({ query: { tags: tag } })
+      this.activeTags = [tag]
+    },
   },
   meta: { theme: 'light' },
   head() {
@@ -174,6 +180,7 @@ export default {
 .notes-wrapper {
   display: flex;
   flex-direction: column;
+  max-width: 900px;
   opacity: 1;
   position: relative;
   width: 100%;
@@ -207,16 +214,5 @@ export default {
 
 .notes-tags {
   margin: 0 0 30px;
-}
-
-.notes-tag {
-  color: var(--light-text-color2);
-  font-size: 1.3rem;
-  padding: 0 5px 0 0;
-  text-decoration: none;
-
-  &.is-active {
-    color: var(--light-text-focus);
-  }
 }
 </style>

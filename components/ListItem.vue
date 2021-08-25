@@ -53,10 +53,18 @@ export default {
 @import '@/assets/scss/_breakpoint.scss';
 
 .list-item {
+  --duration: 500ms;
+
   color: var(--light-text-color2);
   display: flex;
   margin: 0 0 30px;
+  transition: opacity var(--duration) ease;
   width: 100%;
+
+  &.fade-enter,
+  &.fade-leave-to {
+    opacity: 0;
+  }
 }
 
 .list-item-number {

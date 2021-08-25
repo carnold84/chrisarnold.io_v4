@@ -37,24 +37,24 @@ export default {
   .light-theme & {
     color: var(--light-text-color2);
 
-    &.is-active {
-      color: var(--light-text-focus);
-    }
-
     &:hover {
       color: var(--light-text-color1);
+    }
+
+    &.is-active {
+      color: var(--light-text-focus);
     }
   }
 
   .dark-theme & {
     color: var(--dark-text-color2);
 
-    &.is-active {
-      color: var(--dark-text-focus);
-    }
-
     &:hover {
       color: var(--dark-text-color1);
+    }
+
+    &.is-active {
+      color: var(--dark-text-focus);
     }
   }
 }
