@@ -87,6 +87,11 @@ export default {
           label: 'Code',
           path: '/code',
         },
+        {
+          id: 'notes',
+          label: 'Notes',
+          path: '/notes',
+        },
         /* {
           id: 'resources',
           label: 'Resources',

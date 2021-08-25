@@ -22,7 +22,7 @@ export default {
   --light-color5: #cdcecf;
   --light-color6: #c1c2c4;
   --light-focus: #1c2227;
-  --light-text-focus: #ffffff;
+  --light-text-focus: #da1392;
   --dark-color1: #1c2227;
   --dark-color2: #20262b;
   --dark-color3: #242a2f;
@@ -32,7 +32,7 @@ export default {
   --dark-focus: rgb(185, 78, 247);
   --dark-text-focus: #1c2227;
   --light-text-color1: rgba(0, 0, 0, 0.7);
-  --light-text-color2: rgba(0, 0, 0, 0.5);
+  --light-text-color2: rgba(0, 0, 0, 0.6);
   --light-text-color3: rgba(0, 0, 0, 0.3);
   --dark-text-color1: rgba(255, 255, 255, 1);
   --dark-text-color2: rgba(255, 255, 255, 0.7);
@@ -81,7 +81,7 @@ body {
   } */
 
   &.light-theme {
-    background-color: var(--light-color3);
+    background-color: var(--light-color2);
 
     /* &::-webkit-scrollbar-track {
       background-color: var(--light-color1);
