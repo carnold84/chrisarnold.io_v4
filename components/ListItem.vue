@@ -1,6 +1,10 @@
 <template>
   <div class="list-item">
-    <div class="list-item-text">
+    <router-link v-if="to" :to="to" class="list-item-text">
+      <h2 class="list-item-title">{{ title }}</h2>
+      <p class="list-item-sub-title">{{ subTitle }}</p>
+    </router-link>
+    <div v-else class="list-item-text">
       <h2 class="list-item-title">{{ title }}</h2>
       <p class="list-item-sub-title">{{ subTitle }}</p>
     </div>
@@ -39,6 +43,10 @@ export default {
       required: true,
       type: String,
     },
+    to: {
+      default: undefined,
+      type: [Object, String],
+    },
   },
   computed: {
     paddedNumber() {
@@ -67,26 +75,13 @@ export default {
   }
 }
 
-.list-item-number {
-  color: var(--light-text-color3);
-  display: none;
-  font-family: var(--title-font);
-  font-size: 2.4rem;
-  font-weight: 300;
-  line-height: 3.4rem;
-  margin: 0 10px 10px;
-
-  @include breakpoint('md') {
-    display: flex;
-  }
-}
-
 .list-item-text {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   flex-shrink: 0;
   margin: 0 10px 0 0;
+  text-decoration: none;
 }
 
 .list-item-title {

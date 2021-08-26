@@ -1,4 +1,5 @@
 ---
+description: 'Example of state management in React using useContext and useReducer hooks.'
 path: '/notes/state-management-with-react-hooks'
 publishedAt: '2021-07-20'
 tags: 'React, Hooks'

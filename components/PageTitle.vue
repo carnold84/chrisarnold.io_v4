@@ -18,7 +18,7 @@ export default {
   font-size: 4.2rem;
   font-weight: 300;
   line-height: 4.2rem;
-  margin: 0 0 30px;
+  margin: 0 0 30px -4px;
 
   @include breakpoint('sm') {
     font-size: 5rem;

@@ -1,4 +1,5 @@
 ---
+description: 'Example of passing slots down through multiple components in Vue.'
 path: '/notes/passing-down-slots-in-vue'
 publishedAt: '2021-08-24'
 tags: 'Vue'

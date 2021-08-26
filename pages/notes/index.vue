@@ -27,6 +27,7 @@
       <div class="notes-content">
         <transition-group mode="in-out" name="fade">
           <template v-for="(note, index) in data">
+            {{ note.slug }}
             <list-item
               v-if="getIsActive(note)"
               :key="note.slug"
@@ -34,6 +35,7 @@
               :sub-title="formatDate(note.publishedAt)"
               :tags="getNoteTags(note)"
               :title="note.title"
+              :to="`/notes/${note.slug}`"
             />
           </template>
         </transition-group>
@@ -46,6 +48,7 @@
 import AppPage from '~/components/AppPage.vue'
 import ListItem from '~/components/ListItem.vue'
 import TagLink from '~/components/TagLink.vue'
+import { formatDate } from '~/utils/date'
 
 export default {
   components: {
@@ -76,14 +79,14 @@ export default {
       breadcrumb: [],
     }
   },
+  watch: {
+    $route() {
+      this.activeTags = this.getQueryTags()
+    },
+  },
   methods: {
     formatDate(date) {
-      return new Intl.DateTimeFormat([], {
-        day: 'numeric',
-        month: 'long',
-        weekday: 'long',
-        year: '2-digit',
-      }).format(new Date(date))
+      return formatDate(date)
     },
     getIsActive(note) {
       if (this.activeTags.length === 0) {
@@ -145,8 +148,6 @@ export default {
       } else {
         this.$router.push({ query: { tags: activeTags.join(',') } })
       }
-
-      this.activeTags = activeTags
     },
     onItemTagClick(tag) {
       this.$router.push({ query: { tags: tag } })
