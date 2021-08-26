@@ -21,7 +21,19 @@
         </a>
       </router-link>
       <page-title style="margin: 0 0 10px">{{ data.title }}</page-title>
-      <p class="note-meta">{{ formatDate(data.publishedAt) }}</p>
+      <div class="note-meta">
+        <p class="note-published">{{ formatDate(data.publishedAt) }}</p>
+        <div class="note-tags">
+          <tag-link
+            v-for="tag of data.tags.split(', ')"
+            :key="tag"
+            :to="{ query: { tags: tag } }"
+            @click.native.prevent="onTagClick(tag)"
+          >
+            #{{ tag }}
+          </tag-link>
+        </div>
+      </div>
       <div class="note-content">
         <nuxt-content :document="data" />
       </div>
@@ -32,10 +44,12 @@
 <script>
 import { formatDate } from '~/utils/date'
 import AppPage from '~/components/AppPage.vue'
+import TagLink from '~/components/TagLink.vue'
 
 export default {
   components: {
     AppPage,
+    TagLink,
   },
   async asyncData({ $content, params }) {
     const data = await $content('notes')
@@ -58,6 +72,9 @@ export default {
     },
     onBackClick() {
       this.$router.go(-1)
+    },
+    onTagClick(tag) {
+      this.$router.push({ path: '/notes', query: { tags: tag } })
     },
   },
   meta: { theme: 'light' },
@@ -119,10 +136,20 @@ export default {
 }
 
 .note-meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 10px;
+}
+
+.note-published {
   color: var(--light-text-color2);
   font-size: 1.3rem;
   font-weight: 300;
-  margin: 0 0 10px;
+  margin: 0;
+}
+
+.note-tags {
+  display: flex;
 }
 
 .note-content {
