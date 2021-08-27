@@ -1,15 +1,15 @@
 <template>
   <app-drawer :is-open="isOpen" :on-close="onClose">
+    <template v-slot:header-content>
+      <button
+        class="link"
+        :title="items[0].label"
+        @click="(evt) => onSelect(evt, items[0].path)"
+      >
+        <app-logo />
+      </button>
+    </template>
     <div class="wrapper">
-      <div class="header">
-        <button
-          class="link"
-          :title="items[0].label"
-          @click="(evt) => onSelect(evt, items[0].path)"
-        >
-          <app-logo />
-        </button>
-      </div>
       <div class="content">
         <ul class="nav-list">
           <li v-for="item in items" :key="item.id" class="nav-item">
@@ -96,16 +96,6 @@ export default {
   width: 100%;
 }
 
-.header {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  flex-shrink: 0;
-  justify-content: space-between;
-  margin: 0;
-  width: 100%;
-}
-
 .content {
   align-items: center;
   display: flex;
@@ -149,9 +139,11 @@ export default {
     margin: 0 0 1px 8px;
   }
 
-  &:hover {
-    color: var(--light-text-color2);
-    fill: var(--light-text-color2);
+  &:hover,
+  &:focus {
+    color: var(--light-text-focus);
+    fill: var(--light-text-focus);
+    outline: none;
   }
 }
 
@@ -195,14 +187,12 @@ export default {
     }
 
     &.is-active {
-      color: var(--light-text-color1);
+      color: var(--light-text-focus);
     }
 
-    &:hover {
-      color: var(--light-text-color1);
-    }
-
+    &:hover,
     &:focus {
+      color: var(--light-text-focus);
       outline: none;
     }
   }

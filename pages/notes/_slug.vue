@@ -103,7 +103,7 @@ export default {
 .note-wrapper {
   display: flex;
   flex-direction: column;
-  max-width: 900px;
+  max-width: 700px;
   opacity: 1;
   position: relative;
   width: 100%;
@@ -137,7 +137,7 @@ export default {
 
 .note-meta {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin: 0 0 10px;
 }
 
@@ -145,7 +145,7 @@ export default {
   color: var(--light-text-color2);
   font-size: 1.3rem;
   font-weight: 300;
-  margin: 0;
+  margin: 0 20px 0 0;
 }
 
 .note-tags {

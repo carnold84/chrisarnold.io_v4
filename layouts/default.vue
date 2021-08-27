@@ -30,7 +30,7 @@ export default {
   --dark-color5: #2c3238;
   --dark-color6: #2f373c;
   --dark-focus: rgb(185, 78, 247);
-  --dark-text-focus: #1c2227;
+  --dark-text-focus: #ff73cc;
   --light-text-color1: rgba(0, 0, 0, 0.7);
   --light-text-color2: rgba(0, 0, 0, 0.6);
   --light-text-color3: rgba(0, 0, 0, 0.3);

@@ -181,7 +181,7 @@ export default {
 .notes-wrapper {
   display: flex;
   flex-direction: column;
-  max-width: 900px;
+  max-width: 700px;
   opacity: 1;
   position: relative;
   width: 100%;

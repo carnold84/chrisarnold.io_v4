@@ -12,17 +12,20 @@
     >
       <div v-if="isOpen" class="app-drawer">
         <header class="header">
+          <div class="header-content">
+            <slot name="header-content" />
+          </div>
           <button class="close-btn" @click="onClose">
             <svg
-              width="17"
+              width="18"
               height="18"
-              viewBox="0 0 17 18"
+              viewBox="0 0 18 18"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 fill-rule="evenodd"
                 clip-rule="evenodd"
-                d="M2.93866 1.16685C2.54814 0.776323 1.91497 0.776324 1.52445 1.16685L1.04082 1.65048C0.650293 2.041 0.650294 2.67417 1.04082 3.06469L6.97613 9.00001L1.04083 14.9353C0.650308 15.3258 0.650308 15.959 1.04083 16.3495L1.52446 16.8331C1.91499 17.2237 2.54815 17.2237 2.93868 16.8331L8.87398 10.8978L14.8092 16.8331C15.1998 17.2236 15.8329 17.2236 16.2235 16.8331L16.7071 16.3495C17.0976 15.959 17.0976 15.3258 16.7071 14.9353L10.7718 9.00001L16.7071 3.06472C17.0976 2.67419 17.0976 2.04103 16.7071 1.6505L16.2235 1.16687C15.833 0.77635 15.1998 0.77635 14.8093 1.16687L8.87398 7.10216L2.93866 1.16685Z"
+                d="M9.29046 7.77264L2.21939 0.701569L0.805176 2.11578L7.87624 9.18685L1.17888 15.8842L2.59309 17.2984L9.29046 10.6011L15.9878 17.2984L17.402 15.8842L10.7047 9.18685L17.7757 2.11578L16.3615 0.701569L9.29046 7.77264Z"
               />
             </svg>
           </button>
@@ -109,12 +112,11 @@ export default {
 }
 
 .header {
+  align-items: center;
   display: flex;
   height: 27px;
-  justify-content: flex-end;
-  position: absolute;
-  right: 30px;
-  top: 30px;
+  justify-content: space-between;
+  width: 100%;
   z-index: 10;
 
   @include breakpoint('xs') {
@@ -132,15 +134,13 @@ export default {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  display: flex;
   fill: var(--light-text-color2);
   padding: 0;
 
-  &:hover {
-    fill: var(--light-text-color1);
-  }
-
+  &:hover,
   &:focus {
-    fill: var(--light-focus);
+    fill: var(--light-text-focus);
     outline: none;
   }
 }
