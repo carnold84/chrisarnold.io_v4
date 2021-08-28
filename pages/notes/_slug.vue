@@ -148,8 +148,13 @@ export default {
     line-height: 2.4rem;
 
     &:first-child {
-      margin: 0;
+      margin-top: 0;
     }
+  }
+
+  ::v-deep .nuxt-content-highlight {
+    border: 1px solid var(--light-color3);
+    padding: 0 5px;
   }
 }
 
