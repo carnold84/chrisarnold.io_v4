@@ -5,7 +5,7 @@
     theme="light"
   >
     <div class="note-wrapper">
-      <router-link v-slot="{ href }" class="note-back-btn" to="/notes">
+      <nuxt-link v-slot="{ href }" class="note-back-btn" to="/notes">
         <a :href="href" @click.prevent="onBackClick">
           <svg
             width="24"
@@ -19,21 +19,15 @@
           </svg>
           Notes
         </a>
-      </router-link>
-      <page-title style="margin: 0 0 10px">{{ data.title }}</page-title>
-      <div class="note-meta">
-        <p class="note-published">{{ formatDate(data.publishedAt) }}</p>
-        <div class="note-tags">
-          <tag-link
-            v-for="tag of data.tags.split(', ')"
-            :key="tag"
-            :to="{ query: { tags: tag } }"
-            @click.native.prevent="onTagClick(tag)"
-          >
-            #{{ tag }}
-          </tag-link>
-        </div>
-      </div>
+      </nuxt-link>
+      <page-title style="margin-bottom: 15px">{{ data.title }}</page-title>
+      <meta-data
+        :date="data.publishedAt"
+        :tags="data.tags"
+        style="margin: 0 0 30px"
+        tags-path="/notes"
+        @tag-clicked="onTagClick"
+      />
       <div class="note-content">
         <nuxt-content :document="data" />
       </div>
@@ -42,14 +36,13 @@
 </template>
 
 <script>
-import { formatDate } from '~/utils/date'
 import AppPage from '~/components/AppPage.vue'
-import TagLink from '~/components/TagLink.vue'
+import MetaData from '~/components/MetaData.vue'
 
 export default {
   components: {
     AppPage,
-    TagLink,
+    MetaData,
   },
   async asyncData({ $content, params }) {
     const data = await $content('notes')
@@ -67,14 +60,24 @@ export default {
     }
   },
   methods: {
-    formatDate(date) {
-      return formatDate(date)
+    getTagsString(tag) {
+      const tagsQuery = this.$route.query.tags
+
+      if (tagsQuery) {
+        if (tagsQuery.includes(tag)) {
+          return tagsQuery
+        }
+        return `${tagsQuery},${tag}`
+      }
+
+      return tag
     },
     onBackClick() {
       this.$router.go(-1)
     },
     onTagClick(tag) {
-      this.$router.push({ path: '/notes', query: { tags: tag } })
+      console.log(tag)
+      this.$router.push(tag.to)
     },
   },
   meta: { theme: 'light' },
@@ -120,7 +123,7 @@ export default {
   fill: var(--light-text-color3);
   font-size: 1.6rem;
   font-weight: 300;
-  margin: 0 0 5px;
+  margin: 0 0 10px;
   text-decoration: none;
 
   &:hover {
@@ -135,23 +138,6 @@ export default {
   }
 }
 
-.note-meta {
-  display: flex;
-  justify-content: flex-start;
-  margin: 0 0 10px;
-}
-
-.note-published {
-  color: var(--light-text-color2);
-  font-size: 1.3rem;
-  font-weight: 300;
-  margin: 0 20px 0 0;
-}
-
-.note-tags {
-  display: flex;
-}
-
 .note-content {
   display: flex;
   flex-direction: column;
@@ -160,6 +146,10 @@ export default {
   ::v-deep p {
     font-size: 1.4rem;
     line-height: 2.4rem;
+
+    &:first-child {
+      margin: 0;
+    }
   }
 }
 

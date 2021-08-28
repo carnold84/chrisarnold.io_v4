@@ -1,43 +1,34 @@
 <template>
   <div class="list-item">
-    <router-link v-if="to" :to="to" class="list-item-text">
+    <nuxt-link v-if="to" :to="to" class="list-item-text">
       <h2 class="list-item-title">{{ title }}</h2>
-      <p class="list-item-sub-title">{{ subTitle }}</p>
-    </router-link>
+    </nuxt-link>
     <div v-else class="list-item-text">
       <h2 class="list-item-title">{{ title }}</h2>
-      <p class="list-item-sub-title">{{ subTitle }}</p>
     </div>
-    <div class="list-item-tags">
-      <tag-link
-        v-for="tag of tags"
-        :key="tag.id"
-        :to="tag.to"
-        @click.native.prevent="tag.onClick"
-      >
-        #{{ tag.label }}
-      </tag-link>
-    </div>
+    <meta-data
+      v-if="meta"
+      :date="meta.date"
+      :tags="meta.tags"
+      :tags-path="meta.tagsPath"
+      @tag-clicked="(tag) => $emit('tag-clicked', tag)"
+    />
   </div>
 </template>
 
 <script>
-import TagLink from './TagLink.vue'
 export default {
   name: 'ListItem',
-  components: { TagLink },
   props: {
     number: {
       required: true,
       type: Number,
     },
-    subTitle: {
-      default: undefined,
-      type: String,
-    },
-    tags: {
-      default: undefined,
-      type: Array,
+    meta: {
+      default() {
+        return undefined
+      },
+      type: Object,
     },
     title: {
       required: true,
@@ -63,9 +54,11 @@ export default {
 .list-item {
   --duration: 500ms;
 
-  color: var(--light-text-color2);
+  border-bottom: 1px solid var(--light-color3);
   display: flex;
-  margin: 0 0 30px;
+  flex-direction: column;
+  padding: 10px 0 18px;
+  text-decoration: none;
   transition: opacity var(--duration) ease;
   width: 100%;
 
@@ -76,43 +69,67 @@ export default {
 }
 
 .list-item-text {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 0;
-  margin: 0 10px 0 0;
   text-decoration: none;
 }
 
 .list-item-title {
-  color: var(--light-text-color1);
   font-family: var(--title-font);
   font-size: 3.4rem;
   font-weight: 300;
   line-height: 4.4rem;
-  margin: 0;
+  margin: 0 0 5px;
   width: 100%;
+
+  .light-theme & {
+    color: var(--light-text-color1);
+
+    &:hover {
+      color: var(--light-text-focus);
+    }
+  }
+
+  .dark-theme & {
+    color: var(--dark-text-color1);
+
+    &:hover {
+      color: var(--dark-text-focus);
+    }
+  }
 }
 
 .list-item-sub-title {
-  color: var(--light-text-color2);
-  flex-grow: 1;
-  flex-shrink: 0;
   font-family: var(--title-font);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 300;
-  line-height: 2.4rem;
+  line-height: 1.3rem;
   margin: 0;
-  width: 100%;
+
+  .light-theme & {
+    color: var(--light-text-color2);
+  }
+
+  .dark-theme & {
+    color: var(--dark-text-color2);
+  }
+}
+
+.list-item-meta {
+  display: flex;
+}
+
+.list-item-meta-divider {
+  color: var(--light-text-color3);
+  font-size: 1.3rem;
+  font-weight: 300;
+  line-height: 1.3rem;
+  margin: 0 7px;
 }
 
 .list-item-tags {
-  align-items: center;
-  display: flex;
-  justify-content: flex-end;
+  display: inline-flex;
 
   & > * {
-    margin: 0 0 0 10px;
+    margin: 0 5px 0 0;
   }
 }
 </style>

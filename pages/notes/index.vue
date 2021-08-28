@@ -32,10 +32,13 @@
               v-if="getIsActive(note)"
               :key="note.slug"
               :number="index + 1"
-              :sub-title="formatDate(note.publishedAt)"
-              :tags="getNoteTags(note)"
+              :meta="{
+                date: note.publishedAt,
+                tags: note.tags,
+              }"
               :title="note.title"
               :to="`/notes/${note.slug}`"
+              @tag-clicked="onItemTagClick"
             />
           </template>
         </transition-group>
@@ -150,8 +153,8 @@ export default {
       }
     },
     onItemTagClick(tag) {
-      this.$router.push({ query: { tags: tag } })
-      this.activeTags = [tag]
+      this.$router.push(tag.to)
+      this.activeTags = [tag.id]
     },
   },
   meta: { theme: 'light' },
@@ -214,6 +217,11 @@ export default {
 }
 
 .notes-tags {
-  margin: 0 0 30px;
+  border-bottom: 1px solid var(--light-color3);
+  padding: 0 0 15px;
+
+  & > * {
+    margin: 0 5px 0 0;
+  }
 }
 </style>

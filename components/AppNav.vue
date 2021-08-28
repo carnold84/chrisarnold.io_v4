@@ -1,14 +1,14 @@
 <template>
   <ul class="nav-list">
     <li v-for="item in items" :key="item.id" class="nav-item">
-      <router-link
+      <nuxt-link
         active-class="is-active"
         class="link"
         :exact="item.path === '/'"
         :to="item.path"
       >
         {{ item.label }}
-      </router-link>
+      </nuxt-link>
     </li>
   </ul>
 </template>

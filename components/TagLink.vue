@@ -1,5 +1,5 @@
 <template>
-  <router-link v-slot="{ href }" :to="to">
+  <nuxt-link v-slot="{ href }" custom :to="to">
     <a
       :class="[{ 'is-active': isActive }, 'tag-link']"
       :href="href"
@@ -7,7 +7,7 @@
     >
       <slot />
     </a>
-  </router-link>
+  </nuxt-link>
 </template>
 
 <script>
@@ -31,14 +31,14 @@ export default {
 
 .tag-link {
   font-size: 1.3rem;
-  padding: 0 5px 0 0;
+  line-height: 1.3rem;
   text-decoration: none;
 
   .light-theme & {
     color: var(--light-text-color2);
 
     &:hover {
-      color: var(--light-text-color1);
+      color: var(--light-text-focus);
     }
 
     &.is-active {
@@ -50,7 +50,7 @@ export default {
     color: var(--dark-text-color2);
 
     &:hover {
-      color: var(--dark-text-color1);
+      color: var(--dark-text-focus);
     }
 
     &.is-active {
