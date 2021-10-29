@@ -154,6 +154,8 @@ export default {
 
   ::v-deep .nuxt-content-highlight {
     border: 1px solid var(--light-color3);
+    font-size: 1.4rem;
+    line-height: 2.4rem;
     padding: 0 5px;
   }
 }
